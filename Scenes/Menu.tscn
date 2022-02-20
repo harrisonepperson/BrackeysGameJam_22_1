@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Images/Menu/Logo.png" type="Texture" id=1]
+[ext_resource path="res://Images/Menu/bg.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/Sora/Sora-Regular.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 0.55, 0.56 )
+rect_pivot_offset = Vector2( 0.55, 0 )
+texture = ExtResource( 2 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -413.0
+margin_top = -70.0
+margin_right = -78.0
+margin_bottom = 23.0
+custom_colors/font_color = Color( 0.647059, 0.65098, 0.964706, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "The dreamscape feels less real than ever.
+Nothing is quite as you remember.
+
+Can you get out? "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -20.0
+margin_right = 40.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Logo" type="Sprite" parent="Control"]
+position = Vector2( 305, 17 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 1 )
