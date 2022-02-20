@@ -14,7 +14,7 @@ public class ParallaxBackground : Godot.ParallaxBackground
 
 	}
 
-	//  // Called every frame. 'delta' is the elapsed time since the previous frame.
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(float delta)
 	{
 		Vector2 newMousePos = GetViewport().GetMousePosition();
