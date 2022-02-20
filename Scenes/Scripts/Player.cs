@@ -3,6 +3,9 @@ using System;
 
 public class Player : KinematicBody
 {
+	[Export]
+	private int StepsToHideDirectionHint = 3;
+	
 	private RayCast wallCheck;
 	private int stepScale = 2;
 	
@@ -13,6 +16,11 @@ public class Player : KinematicBody
 	
 	public override void _Process(float delta)
 	{
+		if(StepsToHideDirectionHint == 0)
+		{
+			GetNode<Spatial>("Direction_Hint").Visible = false;
+		}
+		
 		if(
 			Input.IsActionJustPressed("move_forward") ||
 			Input.IsActionJustPressed("move_backward") ||
@@ -44,6 +52,7 @@ public class Player : KinematicBody
 			{
 			} else {
 				pos += dir;
+				StepsToHideDirectionHint --;
 			}
 			
 			Translation = pos;
