@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BeginHover.png-79756637508dbfeb9b672b5fe43b3c2d.stex"
+path="res://.import/parallax_bg.png-5846b4799ef8f38f72af1ce097d80f8f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Menu/BeginHover.png"
-dest_files=[ "res://.import/BeginHover.png-79756637508dbfeb9b672b5fe43b3c2d.stex" ]
+source_file="res://Images/Menu/parallax_bg.png"
+dest_files=[ "res://.import/parallax_bg.png-5846b4799ef8f38f72af1ce097d80f8f.stex" ]
 
 [params]
 

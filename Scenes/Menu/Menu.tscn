@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Menu/Scripts/BeginButton.cs" type="Script" id=1]
-[ext_resource path="res://Images/Menu/Begin.png" type="Texture" id=2]
+[ext_resource path="res://Images/Menu/begin.png" type="Texture" id=2]
 [ext_resource path="res://Images/Menu/bg.png" type="Texture" id=3]
-[ext_resource path="res://Images/Menu/Logo.png" type="Texture" id=4]
-[ext_resource path="res://Images/Menu/BeginHover.png" type="Texture" id=5]
+[ext_resource path="res://Images/Menu/logo.png" type="Texture" id=4]
+[ext_resource path="res://Images/Menu/begin_hover.png" type="Texture" id=5]
 [ext_resource path="res://Fonts/Sora/Sora-Regular.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="DynamicFont" id=1]
