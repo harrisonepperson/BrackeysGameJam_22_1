@@ -1,0 +1,93 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/Menu/Scripts/BeginButton.cs" type="Script" id=1]
+[ext_resource path="res://Images/Menu/Begin.png" type="Texture" id=2]
+[ext_resource path="res://Images/Menu/bg.png" type="Texture" id=3]
+[ext_resource path="res://Images/Menu/Logo.png" type="Texture" id=4]
+[ext_resource path="res://Images/Menu/BeginHover.png" type="Texture" id=5]
+[ext_resource path="res://Fonts/Sora/Sora-Regular.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 6 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 0.55, 0.56 )
+rect_pivot_offset = Vector2( 0.55, 0 )
+texture = ExtResource( 3 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Right Side" type="Control" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -1024.0
+margin_top = -300.0
+margin_bottom = 300.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BeginButton" type="TextureButton" parent="Right Side"]
+margin_left = 616.0
+margin_top = 321.0
+margin_right = 656.0
+margin_bottom = 361.0
+rect_scale = Vector2( 0.25, 0.25 )
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 5 )
+texture_focused = ExtResource( 5 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Right Side"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -409.0
+margin_top = -99.0
+margin_right = -74.0
+margin_bottom = -6.0
+custom_colors/font_color = Color( 0.647059, 0.65098, 0.964706, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "The dreamscape feels less real than ever.
+Nothing is quite as you remember.
+
+Can you get out? "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left Side" type="Control" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -20.0
+margin_right = 40.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Logo" type="Sprite" parent="Left Side"]
+position = Vector2( 305, 17 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 4 )
+
+[connection signal="button_down" from="Right Side/BeginButton" to="Right Side/BeginButton" method="_on_TextureButton_button_down"]
