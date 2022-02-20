@@ -21,8 +21,15 @@ _global_script_class_icons={
 [application]
 
 config/name="Brackeys_2022_1"
-run/main_scene="res://Scenes/World1.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://Scenes/Menu/Menu.tscn"
+boot_splash/image="res://Images/Menu/title.png"
+boot_splash/bg_color=Color( 0.054902, 0.054902, 0.14902, 1 )
+config/icon="res://Images/Menu/icon.png"
+
+[display]
+
+window/size/resizable=false
+window/stretch/aspect="keep"
 
 [autoload]
 
