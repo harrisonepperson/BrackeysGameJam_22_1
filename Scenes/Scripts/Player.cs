@@ -15,6 +15,7 @@ public class Player : KinematicBody
 
 	public override void _Ready()
 	{
+		GetNode<Spatial>("Direction_Hint").Visible = true;
 		wallCheck = GetNode<RayCast>("Wall_Checker");
 
 

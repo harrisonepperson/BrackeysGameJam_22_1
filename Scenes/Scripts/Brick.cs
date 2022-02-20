@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class Tunnel_Brick : Area
+public class Brick : Area
 {
 	private MeshInstance view;
 	private bool isLocked = true;

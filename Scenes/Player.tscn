@@ -135,6 +135,7 @@ surfaces/0 = {
 }
 
 [node name="Player" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 script = ExtResource( 4 )
 
 [node name="Wall_Checker" type="RayCast" parent="."]
@@ -164,6 +165,7 @@ material/0 = ExtResource( 3 )
 
 [node name="Direction_Hint" type="Spatial" parent="."]
 transform = Transform( -1, 0, -8.74228e-08, 8.74228e-08, -4.37114e-08, -1, -3.82137e-15, -1, 4.37114e-08, 0, -0.4, 0 )
+visible = false
 
 [node name="Left" type="MeshInstance" parent="Direction_Hint"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
