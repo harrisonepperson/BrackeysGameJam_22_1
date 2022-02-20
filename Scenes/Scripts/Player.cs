@@ -50,45 +50,45 @@ public class Player : KinematicBody
 		{
 			Vector3 pos = Translation;
 			Vector3 dir = new Vector3(0, 0, 0);
+			bool reverseAnim = false;
 
 			if (Input.IsActionJustPressed("move_forward"))
 			{
 				dir.z -= stepScale;
-				animationPlayer.Play(WalkAnimationName);
-				animationPlayer.Queue(IdleAnimationName);
 			}
 			else if (Input.IsActionJustPressed("move_backward"))
 			{
 				dir.z += stepScale;
-				animationPlayer.PlayBackwards(WalkAnimationName);
-				animationPlayer.Queue(IdleAnimationName);
+				reverseAnim = true;
 			}
 			else if (Input.IsActionJustPressed("move_left"))
 			{
 				dir.x -= stepScale;
-				animationPlayer.PlayBackwards(WalkAnimationName);
-				animationPlayer.Queue(IdleAnimationName);
+				reverseAnim = true;
 			}
 			else if (Input.IsActionJustPressed("move_right"))
 			{
 				dir.x += stepScale;
-				animationPlayer.PlayBackwards(WalkAnimationName);
-				animationPlayer.Queue(IdleAnimationName);
 			}
 
 			wallCheck.CastTo = dir;
 			wallCheck.ForceRaycastUpdate();
 
-			if (wallCheck.IsColliding())
-			{
-			}
-			else
+			if (!wallCheck.IsColliding())
 			{
 				pos += dir;
 				StepsToHideDirectionHint--;
+				
+				if (reverseAnim)
+				{
+					animationPlayer.PlayBackwards(WalkAnimationName);
+				} else {
+					animationPlayer.Play(WalkAnimationName);
+				}
+				animationPlayer.Queue(IdleAnimationName);
+				
+				Translation = pos;
 			}
-
-			Translation = pos;
 		}
 	}
 }
