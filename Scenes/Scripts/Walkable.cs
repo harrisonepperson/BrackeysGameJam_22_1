@@ -38,7 +38,7 @@ public class Walkable : RigidBody
 		if (steppedOn)
 		{
 			Vector3 pos = Translation;
-			if (lerpTarget - toleranceRange <= pos.y && pos.y <= lerpTarget + toleranceRange)
+			if (Mathf.IsEqualApprox(pos.y, lerpTarget, toleranceRange))
 			{
 				if (lerpTarget == bottom)
 				{
