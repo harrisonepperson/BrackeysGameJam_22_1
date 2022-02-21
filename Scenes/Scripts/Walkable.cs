@@ -4,22 +4,37 @@ using System;
 public class Walkable : RigidBody
 {
 	[Export]
-	private float impactSpeed = 10;
+	private float impactSpeed = 10F;
 	[Export]
-	private float loftSpeed = (float)1;
+	private float loftSpeed = 1F;
 	[Export]
 	private bool shouldDropOnLevelFinish = true;
 	
 	private bool steppedOn = false;
 	
-	private float toleranceRange = (float)0.0005;
-	private float top = (float)0;
-	private float bottom = (float)-0.2;
+	private float toleranceRange = 0.0005F;
+	private float top = 0F;
+	private float bottom = -0.2F;
 	private float lerpTarget;
 	private float lerpSpeed;
 	
+	private float shouldKill = 0;
+	private float tick = 0;
+	
 	public override void _Process(float delta)
 	{
+		if (shouldKill > 0)
+		{
+			steppedOn = false;
+			if (tick < shouldKill)
+			{
+				tick ++;
+			} else {
+				Sleeping = false;
+				GravityScale = 1.0F;
+			}
+		}
+		
 		if (steppedOn)
 		{
 			Vector3 pos = Translation;
@@ -50,5 +65,19 @@ public class Walkable : RigidBody
 		steppedOn = true;
 		lerpTarget = bottom;
 		lerpSpeed = impactSpeed;
+	}
+	
+	public void _levelCompleted(Vector3 goalPos)
+	{
+		if (shouldDropOnLevelFinish)
+		{
+			Random rnd = new Random();
+			
+			Vector3 pos = Translation;
+			float distSqr = pos.DistanceSquaredTo(goalPos);
+			distSqr = rnd.Next(0, 6) * distSqr;
+			
+			shouldKill = (float)Math.Max(0.0000001, 100 * Math.Pow(1/1.003, distSqr));
+		}
 	}
 }

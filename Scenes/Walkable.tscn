@@ -9,7 +9,7 @@ extents = Vector3( 0.9, 0.7, 0.9 )
 [sub_resource type="CubeMesh" id=2]
 size = Vector3( 1.8, 1.4, 1.8 )
 
-[node name="Walkable" type="RigidBody"]
+[node name="Walkable" type="RigidBody" groups=["walkables"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0 )
 collision_layer = 4
 collision_mask = 4

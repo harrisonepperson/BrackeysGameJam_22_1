@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Menu/Scripts/BeginButton.cs" type="Script" id=1]
 [ext_resource path="res://Images/Menu/begin.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Fonts/Sora/Sora-Regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://Scenes/Menu/Scripts/ParallaxBackground.cs" type="Script" id=7]
 [ext_resource path="res://Images/Menu/parallax_bg.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/Levels/Tutorial_Straight.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 6 )
@@ -57,6 +58,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+FirstScene = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="Right Side"]
 anchor_left = 1.0
