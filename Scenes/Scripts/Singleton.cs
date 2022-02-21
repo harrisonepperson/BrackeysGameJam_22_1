@@ -9,5 +9,8 @@ public class Singleton : Node
 		if (Input.IsActionJustPressed("restart")) {
 			GetTree().ReloadCurrentScene();
 		}
+		if (Input.IsActionJustPressed("ui_cancel")) {
+			GetTree().Quit();
+		}
 	}
 }
