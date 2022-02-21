@@ -8,7 +8,6 @@ public class Goal : Area
 	
 	private void _on_Goal_body_entered(object body)
 	{
-		GD.PrintS("Hit the Goal!");
 		GetTree().ChangeSceneTo(nextScene);
 	}
 }

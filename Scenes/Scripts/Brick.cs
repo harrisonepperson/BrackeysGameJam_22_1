@@ -28,7 +28,6 @@ public class Brick : Area
 	{
 		view.Visible = true;
 		isLocked = false;
-		
 	}
 	
 	private void _on_Tunnel_Brick_mouse_exited()

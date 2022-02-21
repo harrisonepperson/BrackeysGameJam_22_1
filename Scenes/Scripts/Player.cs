@@ -7,6 +7,7 @@ public class Player : KinematicBody
 	private int StepsToHideDirectionHint = 3;
 
 	private RayCast wallCheck;
+	private RayCast stepCheck;
 	private int stepScale = 2;
 
 	private AnimationPlayer animationPlayer;
@@ -17,6 +18,7 @@ public class Player : KinematicBody
 	{
 		GetNode<Spatial>("Direction_Hint").Visible = true;
 		wallCheck = GetNode<RayCast>("Wall_Checker");
+		stepCheck = GetNode<RayCast>("Foot");
 
 
 		//Set up player animation
@@ -88,6 +90,18 @@ public class Player : KinematicBody
 				animationPlayer.Queue(IdleAnimationName);
 				
 				Translation = pos;
+				
+				// We can improve this with a jump animation and run this check on
+				// animation end signal
+				stepCheck.ForceRaycastUpdate();
+				if (stepCheck.IsColliding())
+				{
+					Godot.Object steppedOn = stepCheck.GetCollider();
+					if (steppedOn != null && steppedOn.HasMethod("_steppedOn"))
+					{
+						steppedOn.Call("_steppedOn");
+					}
+				}
 			}
 		}
 	}

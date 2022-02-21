@@ -30,11 +30,6 @@ config/icon="res://Images/Menu/icon.png"
 
 Singleton="*res://Scenes/Scripts/Singleton.cs"
 
-[display]
-
-window/size/resizable=false
-window/stretch/aspect="keep"
-
 [gdnative]
 
 singletons=[ "res://addons/godot-git-plugin/git_api.gdnlib" ]
@@ -77,10 +72,19 @@ restart={
  ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Player"
+3d_physics/layer_2="Bricks"
+3d_physics/layer_3="Floors"
+
 [physics]
 
 common/enable_pause_aware_picking=true
 
 [rendering]
 
+quality/filters/sharpen_intensity=1.0
+quality/shadows/filter_mode=2
+quality/filters/msaa=4
 environment/default_environment="res://default_env.tres"
