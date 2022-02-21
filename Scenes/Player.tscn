@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Materials/WalkHintLetter.tres" type="Material" id=1]
 [ext_resource path="res://Materials/WalkHintBox.tres" type="Material" id=2]
 [ext_resource path="res://Materials/Player.tres" type="Material" id=3]
 [ext_resource path="res://Scenes/Scripts/Player.cs" type="Script" id=4]
 [ext_resource path="res://character2.glb" type="PackedScene" id=5]
+[ext_resource path="res://Images/z.png" type="Texture" id=6]
 
 [sub_resource type="CapsuleShape" id=3]
 radius = 0.3
@@ -134,6 +135,25 @@ surfaces/0 = {
 "vertex_count": 2582
 }
 
+[sub_resource type="SpatialMaterial" id=14]
+flags_transparent = true
+vertex_color_use_as_albedo = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 6 )
+
+[sub_resource type="QuadMesh" id=13]
+material = SubResource( 14 )
+size = Vector2( 5, 5 )
+
+[sub_resource type="Curve" id=15]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=16]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
 [node name="Player" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 script = ExtResource( 4 )
@@ -165,7 +185,6 @@ material/0 = ExtResource( 3 )
 
 [node name="Direction_Hint" type="Spatial" parent="."]
 transform = Transform( -1, 0, -8.74228e-08, 8.74228e-08, -4.37114e-08, -1, -3.82137e-15, -1, 4.37114e-08, 0, -0.4, 0 )
-visible = false
 
 [node name="Left" type="MeshInstance" parent="Direction_Hint"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
@@ -206,6 +225,22 @@ material/0 = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.19209e-07, 0 )
 mesh = SubResource( 12 )
 material/0 = ExtResource( 1 )
+
+[node name="CPUParticles" type="CPUParticles" parent="."]
+transform = Transform( -4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0.579384, 0 )
+cast_shadow = 0
+amount = 4
+lifetime = 15.0
+explosiveness = 0.09
+mesh = SubResource( 13 )
+direction = Vector3( 0, 20, 0 )
+spread = 22.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 1.0
+scale_amount = 1.03
+scale_amount_random = 0.11
+scale_amount_curve = SubResource( 15 )
+color_ramp = SubResource( 16 )
 
 [node name="character" parent="." instance=ExtResource( 5 )]
 transform = Transform( -4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0 )
