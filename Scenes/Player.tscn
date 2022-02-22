@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Materials/WalkHintLetter.tres" type="Material" id=1]
 [ext_resource path="res://Materials/WalkHintBox.tres" type="Material" id=2]
@@ -132,6 +132,57 @@ surfaces/0 = {
 "vertex_count": 2582
 }
 
+[sub_resource type="Gradient" id=28]
+offsets = PoolRealArray( 0, 0.070632, 0.468401, 0.710037, 1 )
+colors = PoolColorArray( 0.101961, 0.0431373, 0.054902, 0, 0.1, 0.042, 0.0536, 0.784314, 0.1, 0.042, 0.0536, 0.784314, 0.29, 0.149833, 0.1218, 0.784314, 0.290196, 0.14902, 0.121569, 0 )
+
+[sub_resource type="GradientTexture" id=37]
+gradient = SubResource( 28 )
+
+[sub_resource type="Curve" id=30]
+_data = [ Vector2( 0.277397, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.804795, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=38]
+curve = SubResource( 30 )
+
+[sub_resource type="ParticlesMaterial" id=32]
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+flatness = 1.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.04
+radial_accel = 0.8
+radial_accel_random = 0.8
+scale = 0.05
+scale_random = 0.04
+scale_curve = SubResource( 38 )
+color_ramp = SubResource( 37 )
+
+[sub_resource type="SpatialMaterial" id=39]
+flags_transparent = true
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id=34]
+material = SubResource( 39 )
+
+[sub_resource type="Curve" id=24]
+_data = [ Vector2( 0.633562, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=40]
+curve = SubResource( 24 )
+
+[sub_resource type="ParticlesMaterial" id=26]
+emission_shape = 2
+emission_box_extents = Vector3( 0.4, 0.2, 0.4 )
+scale = 0.05
+scale_random = 0.22
+scale_curve = SubResource( 40 )
+
+[sub_resource type="SphereMesh" id=27]
+material = ExtResource( 7 )
+radial_segments = 4
+rings = 1
+
 [sub_resource type="Gradient" id=17]
 offsets = PoolRealArray( 0.70632, 0.962825 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
@@ -157,82 +208,66 @@ spread = 22.0
 gravity = Vector3( 0, 0, 0 )
 initial_velocity = 1.0
 damping_curve = SubResource( 20 )
-scale = 5.0
+scale = 0.2
 scale_random = 0.11
 scale_curve = SubResource( 22 )
 color_ramp = SubResource( 18 )
 
-[sub_resource type="Curve" id=24]
-_data = [ Vector2( 0.633562, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+[sub_resource type="Animation" id=35]
+resource_name = "Hop"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Heading_Container/Hopping_Container:translation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"points": PoolRealArray(  ),
+"times": PoolRealArray(  )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Heading_Container/Hopping_Container:translation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, -0.6, 0.6, 1.5, 0, -0.1, 0.5, 0.25, -1.28871 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Heading_Container/Hopping_Container:translation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0.553656, 1, -2, -2, -1, 2, 0.25, -0.497309 ),
+"times": PoolRealArray( 0, 1 )
+}
 
-[sub_resource type="CurveTexture" id=25]
-curve = SubResource( 24 )
-
-[sub_resource type="ParticlesMaterial" id=26]
-emission_shape = 2
-emission_box_extents = Vector3( 0.4, 0.2, 0.4 )
-scale = 0.05
-scale_random = 0.22
-scale_curve = SubResource( 25 )
-
-[sub_resource type="SphereMesh" id=27]
-material = ExtResource( 7 )
-radial_segments = 4
-rings = 1
-
-[sub_resource type="Gradient" id=28]
-offsets = PoolRealArray( 0, 0.070632, 0.468401, 0.710037, 1 )
-colors = PoolColorArray( 0.101961, 0.0431373, 0.054902, 0, 0.1, 0.042, 0.0536, 0.784314, 0.1, 0.042, 0.0536, 0.784314, 0.29, 0.149833, 0.1218, 0.784314, 0.290196, 0.14902, 0.121569, 0 )
-
-[sub_resource type="GradientTexture" id=29]
-gradient = SubResource( 28 )
-
-[sub_resource type="Curve" id=30]
-_data = [ Vector2( 0.277397, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.804795, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=31]
-curve = SubResource( 30 )
-
-[sub_resource type="ParticlesMaterial" id=32]
-direction = Vector3( 0, 0, 0 )
-spread = 180.0
-flatness = 1.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 0.04
-radial_accel = 0.8
-radial_accel_random = 0.8
-scale = 0.05
-scale_random = 0.04
-scale_curve = SubResource( 31 )
-color_ramp = SubResource( 29 )
-
-[sub_resource type="SpatialMaterial" id=33]
-flags_transparent = true
-vertex_color_use_as_albedo = true
-
-[sub_resource type="SphereMesh" id=34]
-material = SubResource( 33 )
+[sub_resource type="Animation" id=36]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Heading_Container/Hopping_Container/character:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, -0.15, 0 ) ]
+}
 
 [node name="Player" type="KinematicBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0 )
 script = ExtResource( 4 )
 StepsToHideDirectionHint = 1
 
-[node name="Wall_Checker" type="RayCast" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0 )
-visible = false
-enabled = true
-cast_to = Vector3( 0, 0, -2 )
-collision_mask = 2
-debug_shape_custom_color = Color( 0, 1, 0, 1 )
-debug_shape_thickness = 5.0
-
-[node name="Foot" type="RayCast" parent="."]
-enabled = true
-cast_to = Vector3( 0, -2, 0 )
-collision_mask = 4
-debug_shape_custom_color = Color( 0, 1, 0, 1 )
-debug_shape_thickness = 5.0
+[node name="Collider" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4.76837e-07, 0 )
+shape = SubResource( 3 )
 
 [node name="Camera_Carrier" type="Spatial" parent="."]
 transform = Transform( 0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 0, 0, 0 )
@@ -241,10 +276,6 @@ transform = Transform( 0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.70710
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
 current = true
 fov = 90.0
-
-[node name="Collider" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4.76837e-07, 0 )
-shape = SubResource( 3 )
 
 [node name="Direction_Hint" type="Spatial" parent="."]
 transform = Transform( -1, 0, -8.74228e-08, 8.74228e-08, -4.37114e-08, -1, -3.82137e-15, -1, 4.37114e-08, 0, -0.2, 0 )
@@ -297,26 +328,37 @@ cast_shadow = 0
 mesh = SubResource( 12 )
 material/0 = ExtResource( 1 )
 
-[node name="Particles" type="Particles" parent="."]
-transform = Transform( -4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0.579384, 0 )
-cast_shadow = 0
-amount = 5
-lifetime = 15.0
-preprocess = 15.0
-explosiveness = 0.15
-process_material = SubResource( 23 )
-draw_pass_1 = ExtResource( 3 )
+[node name="Wall_Checker" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, -2 )
+collision_mask = 2
+debug_shape_custom_color = Color( 0, 1, 0, 1 )
+debug_shape_thickness = 5.0
 
-[node name="character" parent="." instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, -0.15, 0 )
+[node name="Heading_Container" type="Spatial" parent="."]
 
-[node name="Impact_Effects" type="Spatial" parent="."]
+[node name="Hopping_Container" type="Spatial" parent="Heading_Container"]
 
-[node name="Sound" type="AudioStreamPlayer" parent="Impact_Effects"]
+[node name="Impact_Effects" type="Spatial" parent="Heading_Container/Hopping_Container"]
+
+[node name="Sound" type="AudioStreamPlayer" parent="Heading_Container/Hopping_Container/Impact_Effects"]
 stream = ExtResource( 5 )
 
-[node name="Crumbles" type="Particles" parent="Impact_Effects"]
+[node name="Dust" type="Particles" parent="Heading_Container/Hopping_Container/Impact_Effects"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0 )
+visible = false
+emitting = false
+amount = 150
+one_shot = true
+preprocess = 0.8
+explosiveness = 0.85
+process_material = SubResource( 32 )
+draw_pass_1 = SubResource( 34 )
+
+[node name="Crumbles" type="Particles" parent="Heading_Container/Hopping_Container/Impact_Effects"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0 )
+visible = false
 emitting = false
 amount = 16
 one_shot = true
@@ -327,12 +369,27 @@ visibility_aabb = AABB( -4, -6, -4, 8, 8, 8 )
 process_material = SubResource( 26 )
 draw_pass_1 = SubResource( 27 )
 
-[node name="Dust" type="Particles" parent="Impact_Effects"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0 )
-emitting = false
-amount = 150
-one_shot = true
-preprocess = 0.8
-explosiveness = 0.85
-process_material = SubResource( 32 )
-draw_pass_1 = SubResource( 34 )
+[node name="Particles" type="Particles" parent="Heading_Container/Hopping_Container"]
+transform = Transform( -4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0.579384, 0 )
+cast_shadow = 0
+amount = 10
+lifetime = 3.0
+preprocess = 15.0
+explosiveness = 0.15
+local_coords = false
+process_material = SubResource( 23 )
+draw_pass_1 = ExtResource( 3 )
+
+[node name="Foot" type="RayCast" parent="Heading_Container/Hopping_Container"]
+enabled = true
+cast_to = Vector3( 0, -2, 0 )
+collision_mask = 4
+debug_shape_custom_color = Color( 0, 1, 0, 1 )
+debug_shape_thickness = 5.0
+
+[node name="character" parent="Heading_Container/Hopping_Container" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, -0.15, 0 )
+
+[node name="HopAnim" type="AnimationPlayer" parent="."]
+anims/Hop = SubResource( 35 )
+anims/RESET = SubResource( 36 )

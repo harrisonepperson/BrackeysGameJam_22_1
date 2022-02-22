@@ -23,9 +23,14 @@ public class Walkable : RigidBody
 	
 	private Random rand = new Random();
 	
+	Particles crumbles;
+	Particles dust;
+	
 	public override void _Ready()
 	{
 		GetNode<MeshInstance>("Visual1").Visible = false;
+		crumbles = GetNode<Particles>("Crumbles");
+		dust = GetNode<Particles>("Dust");
 		
 		string[] scenes = {"Visual1", "Visual2", "Visual3"};
 		string sceneSelection = scenes[rand.Next(0,3)];
@@ -87,6 +92,9 @@ public class Walkable : RigidBody
 		steppedOn = true;
 		lerpTarget = bottom;
 		lerpSpeed = impactSpeed;
+		
+		dust.Emitting = true;
+		crumbles.Emitting = true;
 	}
 	
 	public void _levelCompleted(Vector3 goalPos)
