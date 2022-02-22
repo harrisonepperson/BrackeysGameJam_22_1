@@ -13,9 +13,17 @@ public class Player : KinematicBody
 	private AnimationPlayer animationPlayer;
 	private static string IdleAnimationName = "IdleLoop";
 	private static string WalkAnimationName = "WalkLoop";
+	
+	AudioStreamPlayer playerMoveSound;
+	Particles impactCrumbles;
+	Particles impactDust;
 
 	public override void _Ready()
 	{
+		playerMoveSound = GetNode<AudioStreamPlayer>("Impact_Effects/Sound");
+		impactCrumbles = GetNode<Particles>("Impact_Effects/Crumbles");
+		impactDust = GetNode<Particles>("Impact_Effects/Dust");
+		
 		GetNode<Spatial>("Direction_Hint").Visible = true;
 		wallCheck = GetNode<RayCast>("Wall_Checker");
 		stepCheck = GetNode<RayCast>("Foot");
@@ -82,7 +90,6 @@ public class Player : KinematicBody
 			if (!wallCheck.IsColliding())
 			{
 				//Play the movement sound.
-				var playerMoveSound = GetNode<AudioStreamPlayer>("Sounds/player_move");
 				playerMoveSound.Play();
 				
 				pos += dir;
@@ -108,6 +115,8 @@ public class Player : KinematicBody
 					Godot.Object steppedOn = stepCheck.GetCollider();
 					if (steppedOn != null && steppedOn.HasMethod("_steppedOn"))
 					{
+						impactDust.Emitting = true;
+						impactCrumbles.Emitting = true;
 						steppedOn.Call("_steppedOn");
 					}
 				}

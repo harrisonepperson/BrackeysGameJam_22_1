@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Materials/WalkHintLetter.tres" type="Material" id=1]
 [ext_resource path="res://Materials/WalkHintBox.tres" type="Material" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/Scripts/Player.cs" type="Script" id=4]
 [ext_resource path="res://Audio/Sounds/player_move.mp3" type="AudioStream" id=5]
 [ext_resource path="res://Meshes/character2.glb" type="PackedScene" id=6]
+[ext_resource path="res://Materials/Ground.tres" type="Material" id=7]
 
 [sub_resource type="CapsuleShape" id=3]
 radius = 0.2
@@ -161,6 +162,57 @@ scale_random = 0.11
 scale_curve = SubResource( 22 )
 color_ramp = SubResource( 18 )
 
+[sub_resource type="Curve" id=24]
+_data = [ Vector2( 0.633562, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=25]
+curve = SubResource( 24 )
+
+[sub_resource type="ParticlesMaterial" id=26]
+emission_shape = 2
+emission_box_extents = Vector3( 0.4, 0.2, 0.4 )
+scale = 0.05
+scale_random = 0.22
+scale_curve = SubResource( 25 )
+
+[sub_resource type="SphereMesh" id=27]
+material = ExtResource( 7 )
+radial_segments = 4
+rings = 1
+
+[sub_resource type="Gradient" id=28]
+offsets = PoolRealArray( 0, 0.070632, 0.468401, 0.710037, 1 )
+colors = PoolColorArray( 0.101961, 0.0431373, 0.054902, 0, 0.1, 0.042, 0.0536, 0.784314, 0.1, 0.042, 0.0536, 0.784314, 0.29, 0.149833, 0.1218, 0.784314, 0.290196, 0.14902, 0.121569, 0 )
+
+[sub_resource type="GradientTexture" id=29]
+gradient = SubResource( 28 )
+
+[sub_resource type="Curve" id=30]
+_data = [ Vector2( 0.277397, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.804795, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=31]
+curve = SubResource( 30 )
+
+[sub_resource type="ParticlesMaterial" id=32]
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+flatness = 1.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.04
+radial_accel = 0.8
+radial_accel_random = 0.8
+scale = 0.05
+scale_random = 0.04
+scale_curve = SubResource( 31 )
+color_ramp = SubResource( 29 )
+
+[sub_resource type="SpatialMaterial" id=33]
+flags_transparent = true
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id=34]
+material = SubResource( 33 )
+
 [node name="Player" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0 )
 script = ExtResource( 4 )
@@ -256,9 +308,31 @@ process_material = SubResource( 23 )
 draw_pass_1 = ExtResource( 3 )
 
 [node name="character" parent="." instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0 )
+transform = Transform( -4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, -0.15, 0 )
 
-[node name="Sounds" type="Node" parent="."]
+[node name="Impact_Effects" type="Spatial" parent="."]
 
-[node name="player_move" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Sound" type="AudioStreamPlayer" parent="Impact_Effects"]
 stream = ExtResource( 5 )
+
+[node name="Crumbles" type="Particles" parent="Impact_Effects"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0 )
+emitting = false
+amount = 16
+one_shot = true
+preprocess = 0.4
+explosiveness = 0.8
+randomness = 0.4
+visibility_aabb = AABB( -4, -6, -4, 8, 8, 8 )
+process_material = SubResource( 26 )
+draw_pass_1 = SubResource( 27 )
+
+[node name="Dust" type="Particles" parent="Impact_Effects"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0 )
+emitting = false
+amount = 150
+one_shot = true
+preprocess = 0.8
+explosiveness = 0.85
+process_material = SubResource( 32 )
+draw_pass_1 = SubResource( 34 )
