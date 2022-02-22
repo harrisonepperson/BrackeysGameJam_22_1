@@ -8,7 +8,7 @@
 [ext_resource path="res://Fonts/Sora/Sora-Regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://Scenes/Menu/Scripts/ParallaxBackground.cs" type="Script" id=7]
 [ext_resource path="res://Images/Menu/parallax_bg.png" type="Texture" id=8]
-[ext_resource path="res://Scenes/Levels/Tutorial_Straight.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Levels/Tutorial_Walk.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Shader" id=2]
 

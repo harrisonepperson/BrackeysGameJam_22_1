@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Walkable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Levels/Tutorial_Rotate_In_Block.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Goal.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Bricks/T_Brick.tscn" type="PackedScene" id=5]
@@ -39,6 +40,7 @@ environment = SubResource( 1 )
 
 [node name="Goal" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -20 )
+nextScene = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 
