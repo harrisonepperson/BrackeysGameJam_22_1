@@ -90,10 +90,9 @@ skeleton = NodePath("../../..")
 material/0 = ExtResource( 3 )
 
 [node name="Platform" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.7, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 
 [node name="Walkable" parent="Platform" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shouldDropOnLevelFinish = false
 
 [node name="Walkable2" parent="Platform" instance=ExtResource( 4 )]

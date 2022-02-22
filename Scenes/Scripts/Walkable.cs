@@ -21,6 +21,30 @@ public class Walkable : RigidBody
 	private float shouldKill = 0;
 	private float tick = 0;
 	
+	private Random rand = new Random();
+	
+	public override void _Ready()
+	{
+		GetNode<MeshInstance>("Visual1").Visible = false;
+		
+		string[] scenes = {"Visual1", "Visual2", "Visual3"};
+		string sceneSelection = scenes[rand.Next(0,3)];
+		
+		Vector3 rot = new Vector3 (0,0,0);
+		rot.y = rand.Next(0,4) * 90;
+		
+		MeshInstance rock = GetNode<MeshInstance>(sceneSelection);
+		rock.RotationDegrees = rot;
+		rock.Visible = true;
+		
+		GD.PrintS(sceneSelection, ", ", rot.y, ", Loaded");
+		
+		Vector3 pos = Translation;
+		pos.x += ((float)rand.Next(-100, 100) / 500);
+		pos.z += ((float)rand.Next(-100, 100) / 500);
+		Translation = pos;
+	}
+	
 	public override void _Process(float delta)
 	{
 		if (shouldKill > 0)
