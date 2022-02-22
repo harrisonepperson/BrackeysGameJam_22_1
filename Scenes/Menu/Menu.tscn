@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/Menu/Scripts/BeginButton.cs" type="Script" id=1]
 [ext_resource path="res://Images/Menu/begin.png" type="Texture" id=2]
@@ -8,14 +8,21 @@
 [ext_resource path="res://Fonts/Sora/Sora-Regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://Scenes/Menu/Scripts/ParallaxBackground.cs" type="Script" id=7]
 [ext_resource path="res://Images/Menu/parallax_bg.png" type="Texture" id=8]
-[ext_resource path="res://Scenes/Levels/Tutorial_Straight.tscn" type="PackedScene" id=9]
+
+[sub_resource type="Shader" id=2]
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 6 )
 
 [node name="Control" type="Control"]
+material = SubResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -23,10 +30,10 @@ __meta__ = {
 [node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_scale = Vector2( 0.55, 0.56 )
 rect_pivot_offset = Vector2( 0.55, 0 )
 texture = ExtResource( 3 )
-stretch_mode = 6
+expand = true
+stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -58,7 +65,6 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-FirstScene = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="Right Side"]
 anchor_left = 1.0
@@ -99,6 +105,7 @@ scroll_offset = Vector2( 56, 0 )
 script = ExtResource( 7 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 motion_mirroring = Vector2( 1045, 599 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]

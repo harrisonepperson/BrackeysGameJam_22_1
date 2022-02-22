@@ -34,6 +34,10 @@ Singleton="*res://Scenes/Scripts/Singleton.cs"
 
 singletons=[ "res://addons/godot-git-plugin/git_api.gdnlib" ]
 
+[global]
+
+clear=false
+
 [input]
 
 Primary_Click={
@@ -86,5 +90,6 @@ common/enable_pause_aware_picking=true
 
 quality/filters/sharpen_intensity=1.0
 quality/shadows/filter_mode=2
+environment/default_clear_color=Color( 0.054902, 0.054902, 0.14902, 1 )
 quality/filters/msaa=4
 environment/default_environment="res://default_env.tres"
