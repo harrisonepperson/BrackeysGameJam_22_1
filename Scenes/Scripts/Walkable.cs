@@ -37,8 +37,6 @@ public class Walkable : RigidBody
 		rock.RotationDegrees = rot;
 		rock.Visible = true;
 		
-		GD.PrintS(sceneSelection, ", ", rot.y, ", Loaded");
-		
 		Vector3 pos = Translation;
 		pos.x += ((float)rand.Next(-100, 100) / 500);
 		pos.z += ((float)rand.Next(-100, 100) / 500);

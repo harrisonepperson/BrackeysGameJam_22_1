@@ -42,9 +42,7 @@ public class Player : KinematicBody
 		{
 			GetNode<Spatial>("Direction_Hint").Visible = false;
 		}
-
-
-
+		
 		if (
 			Input.IsActionJustPressed("move_forward") ||
 			Input.IsActionJustPressed("move_backward") ||
@@ -55,11 +53,7 @@ public class Player : KinematicBody
 			Vector3 pos = Translation;
 			Vector3 dir = new Vector3(0, 0, 0);
 			bool reverseAnim = false;
-
-			//Play the movement sound.
-			var playerMoveSound = GetNode<AudioStreamPlayer>("Sounds/player_move");
-			playerMoveSound.Play();
-
+			
 			if (Input.IsActionJustPressed("move_forward"))
 			{
 				dir.z -= stepScale;
@@ -78,12 +72,19 @@ public class Player : KinematicBody
 			{
 				dir.x += stepScale;
 			}
-
+			
 			wallCheck.CastTo = dir;
 			wallCheck.ForceRaycastUpdate();
-
+			
+			// We check if the player is actually able to move
+			// If he is this is where we actually move him
+			// Animations and sounds and things should be here
 			if (!wallCheck.IsColliding())
 			{
+				//Play the movement sound.
+				var playerMoveSound = GetNode<AudioStreamPlayer>("Sounds/player_move");
+				playerMoveSound.Play();
+				
 				pos += dir;
 				StepsToHideDirectionHint--;
 

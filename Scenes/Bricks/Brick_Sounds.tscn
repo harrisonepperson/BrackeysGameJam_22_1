@@ -2,7 +2,5 @@
 
 [ext_resource path="res://Audio/Sounds/block_rotate.mp3" type="AudioStream" id=1]
 
-[node name="Sounds" type="Node2D"]
-
-[node name="block_rotate" type="AudioStreamPlayer" parent="."]
+[node name="Sounds" type="AudioStreamPlayer"]
 stream = ExtResource( 1 )
