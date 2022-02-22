@@ -17,6 +17,11 @@ public class Goal : Area
 //			Connect("levelCompletedSignal", walkable, "_levelCompleted");
 //		}
 //	}
+
+	public override void _Ready()
+	{
+//		GD.Load<PackedScene>(nextScene);
+	}
 	
 	private void _on_Goal_body_entered(object body)
 	{
@@ -30,11 +35,16 @@ public class Goal : Area
 			}
 		}
 		
+		AnimationPlayer anim = GetNode<AnimationPlayer>("AnimationPlayer");
+		anim.Play("GoalReached");
+		
 //		EmitSignal("levelCompletedSignal", Translation);
 //		
 //		GetTree().ChangeSceneTo(nextScene);
 	}
+	
+	private void _on_AnimationPlayer_animation_finished(String anim_name)
+	{
+		GetTree().ChangeSceneTo(nextScene);
+	}
 }
-
-
-

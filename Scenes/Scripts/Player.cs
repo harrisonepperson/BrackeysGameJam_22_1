@@ -4,10 +4,13 @@ using System;
 public class Player : KinematicBody
 {
 	[Export]
+	private float debug_Timescale = 1;
+	
+	[Export]
 	private int StepsToHideDirectionHint = 3;
 	
 	[Export]
-	private float cameraFollowSpeed = 5F;
+	private float cameraFollowSpeed = 4.5F;
 
 	private RayCast wallCheck;
 	private RayCast stepCheck;
@@ -19,6 +22,7 @@ public class Player : KinematicBody
 	
 	AnimationPlayer hopAnim;
 	bool checkHopAnimState = false;
+	bool stickToGround = true;
 	Spatial Camera_Carrier;
 	Spatial Heading_Container;
 	Spatial Hopping_Container;
@@ -58,6 +62,8 @@ public class Player : KinematicBody
 		
 		// Set up hop animation
 		hopAnim = GetNode<AnimationPlayer>("HopAnim");
+		
+		Engine.TimeScale = debug_Timescale;
 	}
 
 
@@ -68,23 +74,33 @@ public class Player : KinematicBody
 			GetNode<Spatial>("Direction_Hint").Visible = false;
 		}
 		
-//		if (Input.IsActionPressed("Primary_Click"))
-//		{
-//			GD.PrintS(Camera_Carrier.Translation, targetPos);
-//		}
-//		Camera_Carrier.Translation = Camera_Carrier.Translation.LinearInterpolate(targetPos, cameraFollowSpeed * delta);
+		if (stickToGround)
+		{
+			stepCheck.ForceRaycastUpdate();
+			if (stepCheck.IsColliding())
+			{
+				// Get collision point
+				Vector3 collisionPoint = stepCheck.GetCollisionPoint();
+				
+				// Translate player note to match y offset of collision point
+				Vector3 pos = Hopping_Container.Translation;
+				pos.y = 0.15F + collisionPoint.y;
+				Hopping_Container.Translation = pos;
+			}
+		}
 		
 		if (checkHopAnimState)
 		{
 			// Wait For animation to stop
 			if (hopAnim.IsPlaying())
 			{
-//				Vector3 lerpTarget = new Vector3(targetPos.x, targetPos.y, targetPos.z);
-//				Camera_Carrier.Translation = Camera_Carrier.Translation.LinearInterpolate(lerpTarget, cameraFollowSpeed * delta);
+				stickToGround = false;
+				Translation = Translation.LinearInterpolate(targetPos, cameraFollowSpeed * delta);
 				return;
 			} else {
+				stickToGround = true;
+				
 				// Teleport player to new pos
-//				Camera_Carrier.Translation = Vector3.Zero;
 				Hopping_Container.Translation = Vector3.Zero;
 				Translation = targetPos;
 				
@@ -150,8 +166,6 @@ public class Player : KinematicBody
 				
 				/* TODO:
 					* Queue player key presses
-					* Make Camera Follow player horizontal
-					* Poll block pos and stick character to block while it sinks and rises
 					* Release player input queque
 				*/
 				
@@ -172,19 +186,6 @@ public class Player : KinematicBody
 				hopAnim.Play("Hop");
 				checkHopAnimState = true;
 			}
-			
-//			if (!wallCheck.IsColliding())
-//			{
-//				if (reverseAnim)
-//				{
-//					animationPlayer.PlayBackwards(WalkAnimationName);
-//				}
-//				else
-//				{
-//					animationPlayer.Play(WalkAnimationName);
-//				}
-//				animationPlayer.Queue(IdleAnimationName);
-//			}
 		}
 	}
 }

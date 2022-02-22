@@ -28,6 +28,9 @@ public class Walkable : RigidBody
 	
 	public override void _Ready()
 	{
+		GetNode<Particles>("Dust").Visible = true;
+		GetNode<Particles>("Crumbles").Visible = true;
+		
 		GetNode<MeshInstance>("Visual1").Visible = false;
 		crumbles = GetNode<Particles>("Crumbles");
 		dust = GetNode<Particles>("Dust");
