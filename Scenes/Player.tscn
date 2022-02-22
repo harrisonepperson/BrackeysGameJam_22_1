@@ -255,4 +255,4 @@ process_material = SubResource( 23 )
 draw_pass_1 = ExtResource( 3 )
 
 [node name="character" parent="." instance=ExtResource( 6 )]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+transform = Transform( -4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0 )
