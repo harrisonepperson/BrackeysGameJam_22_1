@@ -29,6 +29,7 @@ config/icon="res://Images/Menu/icon.png"
 [autoload]
 
 Singleton="*res://Scenes/Scripts/Singleton.cs"
+AudioStreamPlayer2="*res://Scenes/Menu/AudioPlayer.tscn"
 
 [gdnative]
 
