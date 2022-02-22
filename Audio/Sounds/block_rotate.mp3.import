@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/block_rotate.mp3-370d661a0906f9da98719c840649f126.mp3str"
+
+[deps]
+
+source_file="res://Audio/Sounds/block_rotate.mp3"
+dest_files=[ "res://.import/block_rotate.mp3-370d661a0906f9da98719c840649f126.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
