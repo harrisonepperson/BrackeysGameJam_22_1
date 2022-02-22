@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/character2.glb-65090cba8645db67882973211db0a584.scn"
+path="res://.import/character2.glb-d3ba1a4cead854d8807d8fb43441b27b.scn"
 
 [deps]
 
-source_file="res://character2.glb"
-dest_files=[ "res://.import/character2.glb-65090cba8645db67882973211db0a584.scn" ]
+source_file="res://Meshes/character2.glb"
+dest_files=[ "res://.import/character2.glb-d3ba1a4cead854d8807d8fb43441b27b.scn" ]
 
 [params]
 
