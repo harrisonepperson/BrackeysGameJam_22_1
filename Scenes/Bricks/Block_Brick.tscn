@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Materials/Rotate_Wall.tres" type="Material" id=1]
 [ext_resource path="res://Scenes/Scripts/Brick.cs" type="Script" id=2]
+[ext_resource path="res://Scenes/Bricks/Brick_Sounds.tscn" type="PackedScene" id=3]
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 1.1, 1.1, 1.1 )
@@ -81,6 +82,8 @@ shape = SubResource( 4 )
 mesh = SubResource( 5 )
 skeleton = NodePath("../../..")
 material/0 = ExtResource( 1 )
+
+[node name="Sounds" parent="." instance=ExtResource( 3 )]
 
 [connection signal="mouse_entered" from="." to="." method="_on_Tunnel_Brick_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Tunnel_Brick_mouse_exited"]

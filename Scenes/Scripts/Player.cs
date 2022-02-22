@@ -43,6 +43,8 @@ public class Player : KinematicBody
 			GetNode<Spatial>("Direction_Hint").Visible = false;
 		}
 
+
+
 		if (
 			Input.IsActionJustPressed("move_forward") ||
 			Input.IsActionJustPressed("move_backward") ||
@@ -53,6 +55,10 @@ public class Player : KinematicBody
 			Vector3 pos = Translation;
 			Vector3 dir = new Vector3(0, 0, 0);
 			bool reverseAnim = false;
+
+			//Play the movement sound.
+			var playerMoveSound = GetNode<AudioStreamPlayer>("Sounds/player_move");
+			playerMoveSound.Play();
 
 			if (Input.IsActionJustPressed("move_forward"))
 			{
@@ -80,17 +86,19 @@ public class Player : KinematicBody
 			{
 				pos += dir;
 				StepsToHideDirectionHint--;
-				
+
 				if (reverseAnim)
 				{
 					animationPlayer.PlayBackwards(WalkAnimationName);
-				} else {
+				}
+				else
+				{
 					animationPlayer.Play(WalkAnimationName);
 				}
 				animationPlayer.Queue(IdleAnimationName);
-				
+
 				Translation = pos;
-				
+
 				// We can improve this with a jump animation and run this check on
 				// animation end signal
 				stepCheck.ForceRaycastUpdate();
