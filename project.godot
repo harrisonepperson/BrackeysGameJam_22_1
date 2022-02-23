@@ -82,6 +82,7 @@ restart={
 3d_physics/layer_1="Player"
 3d_physics/layer_2="Bricks"
 3d_physics/layer_3="Floors"
+3d_physics/layer_4="Walls"
 
 [physics]
 
