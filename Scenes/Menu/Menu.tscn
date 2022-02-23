@@ -5,7 +5,7 @@
 [ext_resource path="res://Images/Menu/bg.png" type="Texture" id=3]
 [ext_resource path="res://Images/Menu/logo.png" type="Texture" id=4]
 [ext_resource path="res://Images/Menu/begin_hover.png" type="Texture" id=5]
-[ext_resource path="res://Fonts/Sora/Sora-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Fonts/Colus/Colus-Regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://Scenes/Levels/Tutorial_Walk.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
@@ -87,10 +87,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -160.875
-margin_top = -56.15
-margin_right = 174.125
-margin_bottom = 36.85
+margin_left = -189.0
+margin_top = -52.0
+margin_right = 192.0
+margin_bottom = 41.0
 custom_colors/font_color = Color( 0.647059, 0.65098, 0.964706, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "The dreamscape feels less real than ever.

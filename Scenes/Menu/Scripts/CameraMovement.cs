@@ -20,13 +20,13 @@ public class CameraMovement : Spatial
     {
         Vector2 newMousePos = GetViewport().GetMousePosition();
         Vector2 screenSize = OS.WindowSize;
-        Vector2 offsetFromCenter = (screenSize / 2) - newMousePos;
+        Vector2 offsetFromCenter = ((screenSize / 2) - newMousePos) / screenSize.x * 1200;
 
         var rotationAmount = 0.01;
         var targetRotation = new Vector3(initialRotation);
         targetRotation.y += (float)(offsetFromCenter.x * rotationAmount);
-        targetRotation.z += (float)(offsetFromCenter.y * rotationAmount);
+        targetRotation.x += (float)(offsetFromCenter.y * rotationAmount);
 
-        this.RotationDegrees = this.RotationDegrees.LinearInterpolate(targetRotation, 1F * delta / 2);
+        this.RotationDegrees = this.RotationDegrees.LinearInterpolate(targetRotation, 1F * delta);
     }
 }
