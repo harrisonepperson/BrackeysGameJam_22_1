@@ -1,34 +1,28 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Menu/Scripts/BeginButton.cs" type="Script" id=1]
 [ext_resource path="res://Images/Menu/begin.png" type="Texture" id=2]
 [ext_resource path="res://Images/Menu/bg.png" type="Texture" id=3]
 [ext_resource path="res://Images/Menu/logo.png" type="Texture" id=4]
 [ext_resource path="res://Images/Menu/begin_hover.png" type="Texture" id=5]
-[ext_resource path="res://Fonts/Sora/Sora-Regular.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://Scenes/Menu/Scripts/ParallaxBackground.cs" type="Script" id=7]
-[ext_resource path="res://Images/Menu/parallax_bg.png" type="Texture" id=8]
+[ext_resource path="res://Fonts/Colus/Colus-Regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://Scenes/Levels/Tutorial_Walk.tscn" type="PackedScene" id=9]
-
-[sub_resource type="Shader" id=2]
-
-[sub_resource type="ShaderMaterial" id=3]
-shader = SubResource( 2 )
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 6 )
 
 [node name="Control" type="Control"]
-material = SubResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Background" type="TextureRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 0.55, 0 )
@@ -40,6 +34,7 @@ __meta__ = {
 }
 
 [node name="Right Side" type="Control" parent="."]
+visible = false
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -51,22 +46,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Left Side" type="Control" parent="."]
+[node name="Center" type="Control" parent="."]
+anchor_left = 0.5
 anchor_top = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.5
+margin_left = -20.0
 margin_top = -20.0
-margin_right = 40.0
+margin_right = 20.0
 margin_bottom = 20.0
 size_flags_horizontal = 11
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BeginButton" type="TextureButton" parent="Left Side"]
-margin_left = 616.0
-margin_top = 41.0
-margin_right = 1159.0
-margin_bottom = 215.0
+[node name="BeginButton" type="TextureButton" parent="Center"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -165.0
+margin_right = 266.0
+margin_bottom = -45.0
 rect_scale = Vector2( 0.25, 0.25 )
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 5 )
@@ -79,40 +82,29 @@ __meta__ = {
 }
 FirstScene = ExtResource( 9 )
 
-[node name="Label" type="Label" parent="Left Side"]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = 575.0
-margin_top = -99.0
-margin_right = 910.0
-margin_bottom = -6.0
+[node name="Label" type="Label" parent="Center"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -189.0
+margin_top = -52.0
+margin_right = 192.0
+margin_bottom = 41.0
 custom_colors/font_color = Color( 0.647059, 0.65098, 0.964706, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "The dreamscape feels less real than ever.
 Nothing is quite as you remember.
 
 Can you get out? "
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Logo" type="Sprite" parent="Left Side"]
-position = Vector2( 305, 17 )
-scale = Vector2( 0.25, 0.25 )
+[node name="Logo" type="Sprite" parent="Center"]
+position = Vector2( 18.125, -111.15 )
+scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 4 )
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-scroll_offset = Vector2( 56, 0 )
-script = ExtResource( 7 )
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-visible = false
-motion_mirroring = Vector2( 1045, 599 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 523, 300 )
-texture = ExtResource( 8 )
-
-[connection signal="button_down" from="Left Side/BeginButton" to="Left Side/BeginButton" method="_on_TextureButton_button_down"]
+[connection signal="button_down" from="Center/BeginButton" to="Center/BeginButton" method="_on_TextureButton_button_down"]
