@@ -101,6 +101,9 @@ script = ExtResource( 2 )
 [node name="OmniLight" type="OmniLight" parent="."]
 light_color = Color( 0.109804, 0.901961, 0.94902, 1 )
 light_energy = 4.0
+shadow_enabled = true
+shadow_bias = 0.1
+shadow_contact = 0.8
 omni_range = 3.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -126,35 +129,27 @@ shouldDropOnLevelFinish = false
 
 [node name="Walkable2" parent="Platform" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
-shouldDropOnLevelFinish = false
 
 [node name="Walkable3" parent="Platform" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2 )
-shouldDropOnLevelFinish = false
 
 [node name="Walkable4" parent="Platform" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
-shouldDropOnLevelFinish = false
 
 [node name="Walkable5" parent="Platform" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2 )
-shouldDropOnLevelFinish = false
 
 [node name="Walkable6" parent="Platform" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
-shouldDropOnLevelFinish = false
 
 [node name="Walkable7" parent="Platform" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2 )
-shouldDropOnLevelFinish = false
 
 [node name="Walkable8" parent="Platform" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
-shouldDropOnLevelFinish = false
 
 [node name="Walkable9" parent="Platform" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2 )
-shouldDropOnLevelFinish = false
 
 [connection signal="area_entered" from="." to="." method="_on_Goal_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Goal_body_entered"]

@@ -1,0 +1,104 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Walkable.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Materials/Goal.tres" type="Material" id=5]
+
+[sub_resource type="Environment" id=7]
+background_mode = 1
+background_color = Color( 0.054902, 0.054902, 0.14902, 1 )
+ambient_light_color = Color( 0.647059, 0.65098, 0.964706, 1 )
+ssao_enabled = true
+ssao_radius = 0.4
+ssao_intensity = 1.6
+ssao_radius2 = 4.0
+ssao_intensity2 = 2.0
+ssao_quality = 2
+glow_enabled = true
+glow_intensity = 0.4
+glow_high_quality = true
+adjustment_enabled = true
+
+[sub_resource type="SphereMesh" id=4]
+radius = 0.5
+height = 1.0
+
+[sub_resource type="Animation" id=6]
+resource_name = "Spawn_In"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Spawn_Orb:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Spawn_Orb:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.2, 0.267943 ),
+"update": 0,
+"values": [ Vector3( 10, 10, 10 ), Vector3( 0, 0, 0 ) ]
+}
+
+[node name="SpawnPoint" type="Spatial"]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( -0.752575, -0.135802, 0.644351, 0.172007, 0.903993, 0.39142, -0.635645, 0.405406, -0.656964, 0, 2, 0 )
+shadow_enabled = true
+shadow_contact = 0.9
+
+[node name="Default" type="WorldEnvironment" parent="."]
+environment = SubResource( 7 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+
+[node name="Spawn_Orb" type="MeshInstance" parent="."]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0.5, 0 )
+cast_shadow = 0
+mesh = SubResource( 4 )
+skeleton = NodePath("../../..")
+material/0 = ExtResource( 5 )
+
+[node name="Platform" type="Spatial" parent="."]
+
+[node name="Walkable1" parent="Platform" instance=ExtResource( 4 )]
+
+[node name="Walkable2" parent="Platform" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2 )
+
+[node name="Walkable3" parent="Platform" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
+
+[node name="Walkable4" parent="Platform" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2 )
+
+[node name="Walkable5" parent="Platform" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="Walkable6" parent="Platform" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2 )
+
+[node name="Walkable7" parent="Platform" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
+
+[node name="Walkable8" parent="Platform" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2 )
+
+[node name="Walkable9" parent="Platform" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Spawn_In"
+anims/Spawn_In = SubResource( 6 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="Player" method="_on_AnimationPlayer_animation_finished"]
