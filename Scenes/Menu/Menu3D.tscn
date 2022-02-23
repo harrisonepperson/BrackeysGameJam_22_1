@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/Walkable.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Levels/Tutorial_Straight.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/Menu/Scripts/Begin.cs" type="Script" id=5]
 [ext_resource path="res://Scenes/Menu/Scripts/CameraMovement.cs" type="Script" id=6]
 [ext_resource path="res://Scenes/Menu/MenuIntroFade.cs" type="Script" id=7]
+[ext_resource path="res://Scenes/Dummy_Brick.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Images/Menu/begin.png" type="Texture" id=9]
 
 [sub_resource type="Gradient" id=3]
@@ -59,6 +60,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -8 )
 nextScene = ExtResource( 2 )
 
 [node name="Walkables" type="Spatial" parent="."]
+
+[node name="Dummy_Brick" parent="Walkables" instance=ExtResource( 8 )]
 
 [node name="Walkable11" parent="Walkables" instance=ExtResource( 1 )]
 transform = Transform( 0.44907, 0.0355939, 0.892787, 0.660141, 0.660141, -0.358368, -0.602121, 0.750298, 0.272952, -2.02179, 4.58212, -7.784 )
