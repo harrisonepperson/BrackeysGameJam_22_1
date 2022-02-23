@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Materials/Ground.tres" type="Material" id=1]
+[ext_resource path="res://Meshes/Rock.tres" type="ArrayMesh" id=3]
+
+[node name="Dummy_Brick" type="Spatial"]
+
+[node name="Visual1" type="MeshInstance" parent="."]
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, -0.8, 0 )
+mesh = ExtResource( 3 )
+skeleton = NodePath("")
+material/0 = ExtResource( 1 )
+
+[node name="Visual2" type="MeshInstance" parent="."]
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, -0.8, 0 )
+visible = false
+mesh = ExtResource( 3 )
+skeleton = NodePath("")
+material/0 = ExtResource( 1 )
+
+[node name="Visual3" type="MeshInstance" parent="."]
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, -0.8, 0 )
+visible = false
+mesh = ExtResource( 3 )
+skeleton = NodePath("")
+material/0 = ExtResource( 1 )
