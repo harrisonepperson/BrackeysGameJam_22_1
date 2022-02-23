@@ -3,9 +3,6 @@ using System;
 
 public class OutroBG : Panel
 {
-
-	[Export]
-	private PackedScene MenuScene;
 	private ulong time_start = 0;
 	public override void _Ready()
 	{
@@ -26,7 +23,7 @@ public class OutroBG : Panel
 
 		if (time_elapsed > 10)
 		{
-			GetTree().ChangeSceneTo(MenuScene);
+			GetTree().ChangeScene("res://Scenes/Menu/Menu3D.tscn");
 		}
 	}
 }
