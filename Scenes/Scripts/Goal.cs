@@ -6,6 +6,7 @@ public class Goal : Area
 	[Export]
 	private PackedScene nextScene;
 	
+	
 //	[Signal]
 //	public delegate void levelCompletedSignal(Vector3 pos);
 	
@@ -23,7 +24,7 @@ public class Goal : Area
 //		GD.Load<PackedScene>(nextScene);
 	}
 	
-	private void _on_Goal_body_entered(object body)
+	public void _on_Goal_body_entered(object body)
 	{
 		Godot.Collections.Array walkables = GetTree().GetNodesInGroup("walkables");
 		for (int i = 0; i < walkables.Count; i++)
@@ -35,16 +36,23 @@ public class Goal : Area
 			}
 		}
 		
-		AnimationPlayer anim = GetNode<AnimationPlayer>("AnimationPlayer");
-		anim.Play("GoalReached");
+		playAnimation();
 		
 //		EmitSignal("levelCompletedSignal", Translation);
 //		
 //		GetTree().ChangeSceneTo(nextScene);
 	}
 	
+	public void playAnimation()
+	{		
+		AnimationPlayer anim = GetNode<AnimationPlayer>("AnimationPlayer");
+		anim.Play("GoalReached");
+	}
+
 	private void _on_AnimationPlayer_animation_finished(String anim_name)
 	{
 		GetTree().ChangeSceneTo(nextScene);
 	}
 }
+
+
