@@ -27,7 +27,14 @@ public class Walkable : RigidBody
 	Particles dust;
 	
 	public override void _Ready()
-	{
+	{	
+		Vector3 spawnPos = Translation;
+		spawnPos.y -= 15F;
+		Translation = spawnPos;
+		steppedOn = true;
+		lerpTarget = top;
+		lerpSpeed = 5F;
+		
 		GetNode<Particles>("Dust").Visible = true;
 		GetNode<Particles>("Crumbles").Visible = true;
 		

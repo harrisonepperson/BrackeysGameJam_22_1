@@ -7,11 +7,12 @@ public class Player : KinematicBody
 	private float debug_Timescale = 1;
 	
 	[Export]
-	private int StepsToHideDirectionHint = 3;
+	private int StepsToHideDirectionHint = 1;
 	
 	[Export]
 	private float cameraFollowSpeed = 4.5F;
 
+	private bool isSpawning = true;
 	private RayCast wallCheck;
 	private RayCast stepCheck;
 	private int stepScale = 2;
@@ -42,7 +43,6 @@ public class Player : KinematicBody
 		impactCrumbles = GetNode<Particles>("Heading_Container/Hopping_Container/Impact_Effects/Crumbles");
 		impactDust = GetNode<Particles>("Heading_Container/Hopping_Container/Impact_Effects/Dust");
 		
-		GetNode<Spatial>("Direction_Hint").Visible = true;
 		wallCheck = GetNode<RayCast>("Wall_Checker");
 		stepCheck = GetNode<RayCast>("Heading_Container/Hopping_Container/Foot");
 
@@ -74,7 +74,7 @@ public class Player : KinematicBody
 			GetNode<Spatial>("Direction_Hint").Visible = false;
 		}
 		
-		if (stickToGround)
+		if (stickToGround && !isSpawning)
 		{
 			stepCheck.ForceRaycastUpdate();
 			if (stepCheck.IsColliding())
@@ -134,9 +134,9 @@ public class Player : KinematicBody
 			Input.IsActionJustPressed("move_right")
 		)
 		{
+			isSpawning = false;
 			Vector3 pos = Translation;
 			Vector3 dir = new Vector3(0, 0, 0);
-			bool reverseAnim = false;
 			
 			if (Input.IsActionJustPressed("move_forward"))
 			{
@@ -145,12 +145,10 @@ public class Player : KinematicBody
 			else if (Input.IsActionJustPressed("move_backward"))
 			{
 				dir.z += stepScale;
-				reverseAnim = true;
 			}
 			else if (Input.IsActionJustPressed("move_left"))
 			{
 				dir.x -= stepScale;
-				reverseAnim = true;
 			}
 			else if (Input.IsActionJustPressed("move_right"))
 			{
@@ -187,5 +185,11 @@ public class Player : KinematicBody
 				checkHopAnimState = true;
 			}
 		}
+	}
+	
+	private void _on_AnimationPlayer_animation_finished(String anim_name)
+	{
+		GetNode<Spatial>("Direction_Hint").Visible = true;
+//		GetNode<RayCast>("Heading_Container/Hopping_Container/Foot").Enabled = true;
 	}
 }
