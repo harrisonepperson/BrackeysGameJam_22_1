@@ -7,11 +7,14 @@ public class Player : KinematicBody
 	private float debug_Timescale = 1;
 	
 	[Export]
-	private int StepsToHideDirectionHint = 3;
+	private int StepsToHideDirectionHint = 1;
 	
 	[Export]
 	private float cameraFollowSpeed = 4.5F;
+	
+	private Joy_Area joyStick;
 
+	private bool isSpawning = true;
 	private RayCast wallCheck;
 	private RayCast stepCheck;
 	private int stepScale = 2;
@@ -34,6 +37,8 @@ public class Player : KinematicBody
 	
 	public override void _Ready()
 	{
+		joyStick = GetNode<Joy_Area>("Camera_Carrier/Camera/Control/Joy_Area");
+		
 		Camera_Carrier = GetNode<Spatial>("Camera_Carrier");
 		Heading_Container = GetNode<Spatial>("Heading_Container");
 		Hopping_Container = GetNode<Spatial>("Heading_Container/Hopping_Container");
@@ -42,7 +47,6 @@ public class Player : KinematicBody
 		impactCrumbles = GetNode<Particles>("Heading_Container/Hopping_Container/Impact_Effects/Crumbles");
 		impactDust = GetNode<Particles>("Heading_Container/Hopping_Container/Impact_Effects/Dust");
 		
-		GetNode<Spatial>("Direction_Hint").Visible = true;
 		wallCheck = GetNode<RayCast>("Wall_Checker");
 		stepCheck = GetNode<RayCast>("Heading_Container/Hopping_Container/Foot");
 
@@ -69,12 +73,14 @@ public class Player : KinematicBody
 
 	public override void _Process(float delta)
 	{
+		Vector2 joyHeading = joyStick.joyHeading;
+		
 		if (StepsToHideDirectionHint == 0)
 		{
 			GetNode<Spatial>("Direction_Hint").Visible = false;
 		}
 		
-		if (stickToGround)
+		if (stickToGround && !isSpawning)
 		{
 			stepCheck.ForceRaycastUpdate();
 			if (stepCheck.IsColliding())
@@ -131,28 +137,27 @@ public class Player : KinematicBody
 			Input.IsActionJustPressed("move_forward") ||
 			Input.IsActionJustPressed("move_backward") ||
 			Input.IsActionJustPressed("move_left") ||
-			Input.IsActionJustPressed("move_right")
+			Input.IsActionJustPressed("move_right") ||
+			joyHeading != Vector2.Zero
 		)
 		{
+			isSpawning = false;
 			Vector3 pos = Translation;
 			Vector3 dir = new Vector3(0, 0, 0);
-			bool reverseAnim = false;
 			
-			if (Input.IsActionJustPressed("move_forward"))
+			if (Input.IsActionJustPressed("move_forward") || joyHeading == Vector2.Up)
 			{
 				dir.z -= stepScale;
 			}
-			else if (Input.IsActionJustPressed("move_backward"))
+			else if (Input.IsActionJustPressed("move_backward") || joyHeading == Vector2.Down)
 			{
 				dir.z += stepScale;
-				reverseAnim = true;
 			}
-			else if (Input.IsActionJustPressed("move_left"))
+			else if (Input.IsActionJustPressed("move_left") || joyHeading == Vector2.Left)
 			{
 				dir.x -= stepScale;
-				reverseAnim = true;
 			}
-			else if (Input.IsActionJustPressed("move_right"))
+			else if (Input.IsActionJustPressed("move_right") || joyHeading == Vector2.Right)
 			{
 				dir.x += stepScale;
 			}
@@ -186,6 +191,15 @@ public class Player : KinematicBody
 				hopAnim.Play("Hop");
 				checkHopAnimState = true;
 			}
+		}
+	}
+	
+	private void _on_AnimationPlayer_animation_finished(String anim_name)
+	{
+		if (OS.HasTouchscreenUiHint()) {
+			GetNode<Control>("Camera_Carrier/Camera/Control").Visible = true;
+		} else {
+			GetNode<Spatial>("Direction_Hint").Visible = true;
 		}
 	}
 }

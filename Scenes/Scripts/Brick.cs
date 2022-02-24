@@ -11,10 +11,14 @@ public class Brick : Area
 	private bool isRotating = false;
 	private bool canClick = true;
 	private float targetDegrees;
+	
+	AudioStreamPlayer blockRotateSound;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		blockRotateSound = GetNode<AudioStreamPlayer>("Sounds");
+		
 		view = GetNode<MeshInstance>("View_Target");
 		targetDegrees = RotationDegrees.y;
 	}
@@ -47,7 +51,6 @@ public class Brick : Area
 
 		if (isMouseOn && canClick)
 		{
-			var blockRotate = GetNode<AudioStreamPlayer>("Sounds");
 			bool shouldPlaySound = false;
 			if (Input.IsActionJustPressed("Primary_Click"))
 			{
@@ -65,13 +68,11 @@ public class Brick : Area
 			}
 			
 			if (shouldPlaySound) {
-				if(!blockRotate.IsPlaying())
+				if(!blockRotateSound.IsPlaying())
 				{
-					blockRotate.Play();
+					blockRotateSound.Play();
 				}
 			}
-			
-			
 		}
 	}
 
@@ -85,5 +86,22 @@ public class Brick : Area
 	{
 		view.Visible = false;
 		isMouseOn = false;
+	}
+	
+	private void _on_Brick_input_event(object camera, object @event, Vector3 position, Vector3 normal, int shape_idx)
+	{
+		if (OS.HasTouchscreenUiHint()) {
+			if (@event is InputEventScreenTouch touch && touch.Pressed)
+			{
+				isRotating = true;
+				canClick = false;
+				targetDegrees = Mathf.Stepify(RotationDegrees.y + 90, 90);
+
+				if(!blockRotateSound.IsPlaying())
+				{
+					blockRotateSound.Play();
+				}
+			}
+		}
 	}
 }
