@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
+[ext_resource path="res://Audio/Sounds/level_complete.wav" type="AudioStream" id=1]
 [ext_resource path="res://Scenes/Scripts/Goal.cs" type="Script" id=2]
 [ext_resource path="res://Materials/Goal.tres" type="Material" id=3]
 [ext_resource path="res://Scenes/Walkable.tscn" type="PackedScene" id=4]
@@ -17,7 +18,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 2 ),
 "transitions": PoolRealArray( 3.24901, 1 ),
 "update": 0,
-"values": [ Vector3( 1, 1, 1 ), Vector3( 10, 10, 10 ) ]
+"values": [ Vector3( 1, 1, 1 ), Vector3( 15, 15, 15 ) ]
 }
 
 [sub_resource type="Animation" id=17]
@@ -150,6 +151,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
 
 [node name="Walkable9" parent="Platform" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2 )
+
+[node name="GoalComplete" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -0.981
 
 [connection signal="area_entered" from="." to="." method="_on_Goal_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Goal_body_entered"]
