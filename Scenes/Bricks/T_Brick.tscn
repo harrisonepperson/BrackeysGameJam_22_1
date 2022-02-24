@@ -86,5 +86,6 @@ material/0 = ExtResource( 1 )
 
 [node name="Sounds" parent="." instance=ExtResource( 4 )]
 
+[connection signal="input_event" from="." to="." method="_on_Brick_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_Tunnel_Brick_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Tunnel_Brick_mouse_exited"]

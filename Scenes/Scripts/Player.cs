@@ -11,6 +11,8 @@ public class Player : KinematicBody
 	
 	[Export]
 	private float cameraFollowSpeed = 4.5F;
+	
+	private Joy_Area joyStick;
 
 	private bool isSpawning = true;
 	private RayCast wallCheck;
@@ -35,6 +37,8 @@ public class Player : KinematicBody
 	
 	public override void _Ready()
 	{
+		joyStick = GetNode<Joy_Area>("Camera_Carrier/Camera/Control/Joy_Area");
+		
 		Camera_Carrier = GetNode<Spatial>("Camera_Carrier");
 		Heading_Container = GetNode<Spatial>("Heading_Container");
 		Hopping_Container = GetNode<Spatial>("Heading_Container/Hopping_Container");
@@ -69,6 +73,8 @@ public class Player : KinematicBody
 
 	public override void _Process(float delta)
 	{
+		Vector2 joyHeading = joyStick.joyHeading;
+		
 		if (StepsToHideDirectionHint == 0)
 		{
 			GetNode<Spatial>("Direction_Hint").Visible = false;
@@ -131,26 +137,27 @@ public class Player : KinematicBody
 			Input.IsActionJustPressed("move_forward") ||
 			Input.IsActionJustPressed("move_backward") ||
 			Input.IsActionJustPressed("move_left") ||
-			Input.IsActionJustPressed("move_right")
+			Input.IsActionJustPressed("move_right") ||
+			joyHeading != Vector2.Zero
 		)
 		{
 			isSpawning = false;
 			Vector3 pos = Translation;
 			Vector3 dir = new Vector3(0, 0, 0);
 			
-			if (Input.IsActionJustPressed("move_forward"))
+			if (Input.IsActionJustPressed("move_forward") || joyHeading == Vector2.Up)
 			{
 				dir.z -= stepScale;
 			}
-			else if (Input.IsActionJustPressed("move_backward"))
+			else if (Input.IsActionJustPressed("move_backward") || joyHeading == Vector2.Down)
 			{
 				dir.z += stepScale;
 			}
-			else if (Input.IsActionJustPressed("move_left"))
+			else if (Input.IsActionJustPressed("move_left") || joyHeading == Vector2.Left)
 			{
 				dir.x -= stepScale;
 			}
-			else if (Input.IsActionJustPressed("move_right"))
+			else if (Input.IsActionJustPressed("move_right") || joyHeading == Vector2.Right)
 			{
 				dir.x += stepScale;
 			}
@@ -189,7 +196,10 @@ public class Player : KinematicBody
 	
 	private void _on_AnimationPlayer_animation_finished(String anim_name)
 	{
-		GetNode<Spatial>("Direction_Hint").Visible = true;
-//		GetNode<RayCast>("Heading_Container/Hopping_Container/Foot").Enabled = true;
+		if (OS.HasTouchscreenUiHint()) {
+			GetNode<Control>("Camera_Carrier/Camera/Control").Visible = true;
+		} else {
+			GetNode<Spatial>("Direction_Hint").Visible = true;
+		}
 	}
 }
