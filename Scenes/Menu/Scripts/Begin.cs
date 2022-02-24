@@ -16,12 +16,14 @@ public class Begin : Sprite3D
 
 	private Sprite MenuLogo;
 	private Label MenuText;
+	private Goal goal;
 
 
 	public override void _Ready()
 	{
 		MenuLogo = GetNode<Sprite>("../../CanvasLayer/menu/Center/Logo");
 		MenuText = GetNode<Label>("../../CanvasLayer/menu/Center/Label");
+		goal = GetNode<Goal>("../../Goal");
 
 		var transparent = MenuLogo.Modulate;
 		transparent.a = 0;
@@ -36,7 +38,7 @@ public class Begin : Sprite3D
 			if (Input.IsActionJustPressed("Primary_Click"))
 			{
 				GD.PrintS("Clicked!");
-				GetNode<Goal>("../../Goal").playAnimation();
+				goal.playAnimation();
 				fade = true;
 			}
 		}
@@ -65,7 +67,7 @@ public class Begin : Sprite3D
 		if (OS.HasTouchscreenUiHint()) {
 			if (@event is InputEventScreenTouch touch && touch.Pressed)
 			{
-				GetNode<Goal>("../../Goal").playAnimation();
+				goal.playAnimation();
 				fade = true;
 			}
 		}

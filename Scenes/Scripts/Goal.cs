@@ -5,6 +5,7 @@ public class Goal : Area
 {
 	[Export]
 	private PackedScene nextScene;
+	private AnimationPlayer anim;
 	
 	
 //	[Signal]
@@ -22,6 +23,7 @@ public class Goal : Area
 	public override void _Ready()
 	{
 //		GD.Load<PackedScene>(nextScene);
+		anim = GetNode<AnimationPlayer>("AnimationPlayer");
 	}
 	
 	public void _on_Goal_body_entered(object body)
@@ -45,7 +47,6 @@ public class Goal : Area
 	
 	public void playAnimation()
 	{		
-		AnimationPlayer anim = GetNode<AnimationPlayer>("AnimationPlayer");
 		anim.Play("GoalReached");
 	}
 

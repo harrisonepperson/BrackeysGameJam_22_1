@@ -282,7 +282,7 @@ transform = Transform( 1, -2.98023e-08, 1.49012e-08, 1.49012e-08, 1, 2.98023e-08
 current = true
 fov = 90.0
 
-[node name="Control" type="Control" parent="Camera_Carrier/Camera"]
+[node name="JoyStick" type="Control" parent="Camera_Carrier/Camera"]
 visible = false
 anchor_left = 0.03
 anchor_top = 0.95
@@ -296,17 +296,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Joy_Area" type="Area2D" parent="Camera_Carrier/Camera/Control"]
+[node name="Joy_Area" type="Area2D" parent="Camera_Carrier/Camera/JoyStick"]
 position = Vector2( 64, 64 )
 script = ExtResource( 11 )
 
-[node name="JoyOuter" type="Sprite" parent="Camera_Carrier/Camera/Control/Joy_Area"]
+[node name="JoyOuter" type="Sprite" parent="Camera_Carrier/Camera/JoyStick/Joy_Area"]
 texture = ExtResource( 9 )
 
-[node name="JoyInner" type="Sprite" parent="Camera_Carrier/Camera/Control/Joy_Area"]
+[node name="JoyInner" type="Sprite" parent="Camera_Carrier/Camera/JoyStick/Joy_Area"]
 texture = ExtResource( 8 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera_Carrier/Camera/Control/Joy_Area"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera_Carrier/Camera/JoyStick/Joy_Area"]
 shape = SubResource( 41 )
 one_way_collision = true
 
@@ -429,4 +429,4 @@ transform = Transform( -4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0
 anims/Hop = SubResource( 35 )
 anims/RESET = SubResource( 36 )
 
-[connection signal="input_event" from="Camera_Carrier/Camera/Control/Joy_Area" to="Camera_Carrier/Camera/Control/Joy_Area" method="_on_Joy_Area_input_event"]
+[connection signal="input_event" from="Camera_Carrier/Camera/JoyStick/Joy_Area" to="Camera_Carrier/Camera/JoyStick/Joy_Area" method="_on_Joy_Area_input_event"]

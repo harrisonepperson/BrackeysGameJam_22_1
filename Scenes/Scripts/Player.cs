@@ -12,7 +12,9 @@ public class Player : KinematicBody
 	[Export]
 	private float cameraFollowSpeed = 4.5F;
 	
+	private Spatial directionHint;
 	private Joy_Area joyStick;
+	private Control joyStickControl;
 
 	private bool isSpawning = true;
 	private RayCast wallCheck;
@@ -37,7 +39,9 @@ public class Player : KinematicBody
 	
 	public override void _Ready()
 	{
-		joyStick = GetNode<Joy_Area>("Camera_Carrier/Camera/Control/Joy_Area");
+		directionHint = GetNode<Spatial>("Direction_Hint");
+		joyStick = GetNode<Joy_Area>("Camera_Carrier/Camera/JoyStick/Joy_Area");
+		joyStickControl = GetNode<Control>("Camera_Carrier/Camera/JoyStick");
 		
 		Camera_Carrier = GetNode<Spatial>("Camera_Carrier");
 		Heading_Container = GetNode<Spatial>("Heading_Container");
@@ -77,7 +81,7 @@ public class Player : KinematicBody
 		
 		if (StepsToHideDirectionHint == 0)
 		{
-			GetNode<Spatial>("Direction_Hint").Visible = false;
+			directionHint.Visible = false;
 		}
 		
 		if (stickToGround && !isSpawning)
@@ -197,9 +201,9 @@ public class Player : KinematicBody
 	private void _on_AnimationPlayer_animation_finished(String anim_name)
 	{
 		if (OS.HasTouchscreenUiHint()) {
-			GetNode<Control>("Camera_Carrier/Camera/Control").Visible = true;
+			joyStickControl.Visible = true;
 		} else {
-			GetNode<Spatial>("Direction_Hint").Visible = true;
+			directionHint.Visible = true;
 		}
 	}
 }

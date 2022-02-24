@@ -4,8 +4,12 @@ using System;
 public class OutroBG : Panel
 {
 	private ulong time_start = 0;
+	
+	private string menuScene = "res://Scenes/Menu/Menu3D.tscn";
 	public override void _Ready()
 	{
+		GD.Load<PackedScene>(menuScene);
+		
 		var newColor = this.Modulate;
 		newColor.a = 0;
 		this.Modulate = newColor;
@@ -23,7 +27,7 @@ public class OutroBG : Panel
 
 		if (time_elapsed > 10)
 		{
-			GetTree().ChangeScene("res://Scenes/Menu/Menu3D.tscn");
+			GetTree().ChangeScene(menuScene);
 		}
 	}
 }
