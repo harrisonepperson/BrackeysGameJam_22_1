@@ -38,7 +38,6 @@ public class Begin : Sprite3D
 				GD.PrintS("Clicked!");
 				GetNode<Goal>("../../Goal").playAnimation();
 				fade = true;
-
 			}
 		}
 
@@ -60,11 +59,15 @@ public class Begin : Sprite3D
 	{
 		isMouseOn = false;
 	}
+	
+	private void _on_Area_input_event(object camera, object @event, Vector3 position, Vector3 normal, int shape_idx)
+	{
+		if (OS.HasTouchscreenUiHint()) {
+			if (@event is InputEventScreenTouch touch && touch.Pressed)
+			{
+				GetNode<Goal>("../../Goal").playAnimation();
+				fade = true;
+			}
+		}
+	}
 }
-
-
-
-
-
-
-
