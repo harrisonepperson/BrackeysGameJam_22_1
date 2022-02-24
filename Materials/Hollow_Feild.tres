@@ -3,6 +3,7 @@
 [sub_resource type="Shader" id=1]
 code = "shader_type spatial;
 
+uniform bool isMouseOn = false;
 uniform vec4 albedo : hint_color;
 uniform vec4 edge_albedo : hint_color;
 //uniform float fresnel_power = 15.0;
@@ -43,12 +44,18 @@ void fragment() {
 	float uv_offset = mod(-TIME * scanline_period, 2.0) - 1.0;
 	float scanline = smoothstep(0.5 - scanline_width, 0.5, UV.y + uv_offset) * (1.0 - smoothstep(0.5, 0.5 + scanline_width, UV.y + uv_offset)); // * pattern.r;
 	
+	float emitFloor = 0.0;
+	if (isMouseOn) {
+		emitFloor = 0.15;
+	}
+	
 	ALBEDO = albedo.rgb;
-	EMISSION = edge_albedo.rgb * smoothstep(0, 1, scanline * scanline_intensity);
+	EMISSION = edge_albedo.rgb * clamp(smoothstep(0, 1, scanline * scanline_intensity), emitFloor, 1);
 }"
 
 [resource]
 shader = SubResource( 1 )
+shader_param/isMouseOn = false
 shader_param/albedo = Color( 0.121569, 0.121569, 0.286275, 1 )
 shader_param/edge_albedo = Color( 0.231373, 1, 1, 1 )
 shader_param/scanline_period = 0.5
