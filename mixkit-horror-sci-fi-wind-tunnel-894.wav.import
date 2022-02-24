@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mixkit-horror-sci-fi-wind-tunnel-894.wav-745ea338c6f237ede2370118ef0a69df.sample"
+
+[deps]
+
+source_file="res://mixkit-horror-sci-fi-wind-tunnel-894.wav"
+dest_files=[ "res://.import/mixkit-horror-sci-fi-wind-tunnel-894.wav-745ea338c6f237ede2370118ef0a69df.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
