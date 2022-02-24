@@ -48,14 +48,14 @@ public class Goal : Area
 	}
 	
 	public void playAnimation()
-	{		
-		anim.Play("GoalReached");
+	{
 		goalCompleteSound.Play();
+		anim.Play("GoalReached");
 	}
 
 	private async void _on_AnimationPlayer_animation_finished(String anim_name)
 	{		
-		await ToSignal(GetTree().CreateTimer(1), "timeout");
+//		await ToSignal(GetTree().CreateTimer(1), "timeout");
 		GetTree().ChangeSceneTo(nextScene);
 	}
 }

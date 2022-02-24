@@ -14,9 +14,6 @@ extents = Vector3( 5, 1, 1 )
 
 [node name="Spatial" type="Spatial"]
 
-[node name="Brick" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -8 )
-
 [node name="Goal" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -8 )
 nextScene = ExtResource( 1 )
@@ -33,6 +30,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
 
 [node name="Walkable12" parent="Walkables" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8 )
+
+[node name="Brick" parent="Walkables/Walkable12" instance=ExtResource( 5 )]
 
 [node name="Walkable13" parent="Walkables" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -8 )

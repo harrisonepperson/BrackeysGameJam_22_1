@@ -1,17 +1,15 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Materials/Rotate_Wall.tres" type="Material" id=1]
 [ext_resource path="res://Scenes/Scripts/Brick.cs" type="Script" id=2]
 [ext_resource path="res://Scenes/Bricks/Brick_Sounds.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Meshes/Blocks.tres" type="ArrayMesh" id=4]
+[ext_resource path="res://Materials/Hollow_Feild.tres" type="Material" id=5]
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 1.1, 1.1, 1.1 )
 
-[sub_resource type="CubeMesh" id=6]
-
-[sub_resource type="SpatialMaterial" id=7]
-flags_transparent = true
-albedo_color = Color( 0, 1, 0.0392157, 0.360784 )
+[sub_resource type="SphereMesh" id=6]
 
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 1, 1, 0.25 )
@@ -29,9 +27,9 @@ script = ExtResource( 2 )
 shape = SubResource( 3 )
 
 [node name="View_Target" type="MeshInstance" parent="."]
-visible = false
+transform = Transform( 1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, -0.200437, 0 )
 mesh = SubResource( 6 )
-material/0 = SubResource( 7 )
+material/0 = ExtResource( 5 )
 
 [node name="Walls" type="RigidBody" parent="."]
 collision_layer = 2
@@ -43,21 +41,26 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.75 )
 shape = SubResource( 4 )
 
 [node name="Wall_1_View" type="MeshInstance" parent="Walls/Wall_1_Collider"]
-mesh = SubResource( 5 )
+transform = Transform( 7.21238e-08, 1.24572e-07, -1.65, -1.65, -7.21238e-08, -7.21238e-08, -7.21238e-08, 1.65, 1.24572e-07, 0, -0.2, -0.1 )
+mesh = ExtResource( 4 )
 skeleton = NodePath("../../..")
-material/0 = ExtResource( 1 )
+material/0 = null
+material/1 = null
 
 [node name="Wall_2_Collider" type="CollisionShape" parent="Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.75 )
 shape = SubResource( 4 )
 
 [node name="Wall_2_View" type="MeshInstance" parent="Walls/Wall_2_Collider"]
-mesh = SubResource( 5 )
-skeleton = NodePath("../../Wall_1_Collider")
-material/0 = ExtResource( 1 )
+transform = Transform( 1.6, 7.01793e-08, 3.06764e-15, 0, -6.99382e-08, 1.6, 7.01793e-08, -1.6, -6.99382e-08, 0, -0.2, 0.1 )
+mesh = ExtResource( 4 )
+skeleton = NodePath("../../..")
+material/0 = null
+material/1 = null
 
 [node name="Floor_Collider" type="CollisionShape" parent="Walls"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -1, 0 )
+visible = false
 shape = SubResource( 4 )
 
 [node name="Floor_View" type="MeshInstance" parent="Walls/Floor_Collider"]
