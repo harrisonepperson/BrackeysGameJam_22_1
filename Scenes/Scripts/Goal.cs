@@ -7,6 +7,7 @@ public class Goal : Area
 	private PackedScene nextScene;
 	private AnimationPlayer anim;
 	
+	AudioStreamPlayer goalCompleteSound;
 	
 //	[Signal]
 //	public delegate void levelCompletedSignal(Vector3 pos);
@@ -24,6 +25,7 @@ public class Goal : Area
 	{
 //		GD.Load<PackedScene>(nextScene);
 		anim = GetNode<AnimationPlayer>("AnimationPlayer");
+		goalCompleteSound = GetNode<AudioStreamPlayer>("GoalComplete");
 	}
 	
 	public void _on_Goal_body_entered(object body)
@@ -48,10 +50,12 @@ public class Goal : Area
 	public void playAnimation()
 	{		
 		anim.Play("GoalReached");
+		goalCompleteSound.Play();
 	}
 
-	private void _on_AnimationPlayer_animation_finished(String anim_name)
-	{
+	private async void _on_AnimationPlayer_animation_finished(String anim_name)
+	{		
+		await ToSignal(GetTree().CreateTimer(1), "timeout");
 		GetTree().ChangeSceneTo(nextScene);
 	}
 }
