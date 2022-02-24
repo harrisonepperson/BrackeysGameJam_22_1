@@ -78,13 +78,13 @@ public class Brick : Area
 
 	private void _on_Tunnel_Brick_mouse_entered()
 	{
-		view.Visible = true;
+//		view.Visible = true;
 		isMouseOn = true;
 	}
 
 	private void _on_Tunnel_Brick_mouse_exited()
 	{
-		view.Visible = false;
+//		view.Visible = false;
 		isMouseOn = false;
 	}
 	

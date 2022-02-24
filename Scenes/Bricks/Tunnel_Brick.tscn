@@ -28,6 +28,7 @@ shape = SubResource( 3 )
 
 [node name="View_Target" type="MeshInstance" parent="."]
 transform = Transform( 1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, -0.200437, 0 )
+visible = false
 mesh = SubResource( 6 )
 material/0 = ExtResource( 5 )
 
