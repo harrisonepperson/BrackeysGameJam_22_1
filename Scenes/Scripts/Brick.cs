@@ -10,6 +10,7 @@ public class Brick : Area
 	private bool isMouseOn = false;
 	private bool isRotating = false;
 	private bool canClick = true;
+	private bool playerOnBlock = false;
 	private float targetDegrees;
 	
 	AudioStreamPlayer blockRotateSound;
@@ -49,7 +50,7 @@ public class Brick : Area
 			}
 		}
 
-		if (isMouseOn && canClick)
+		if (isMouseOn && canClick && !playerOnBlock)
 		{
 			bool shouldPlaySound = false;
 			if (Input.IsActionJustPressed("Primary_Click"))
@@ -103,5 +104,15 @@ public class Brick : Area
 				}
 			}
 		}
+	}
+	
+	private void _on_Brick_body_entered(object body)
+	{
+		playerOnBlock = true;
+	}
+	
+	private void _on_Brick_body_exited(object body)
+	{
+		playerOnBlock = false;
 	}
 }
