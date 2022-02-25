@@ -62,21 +62,21 @@ nextScene = ExtResource( 2 )
 [node name="Walkables" type="Spatial" parent="."]
 
 [node name="Dummy_Brick" parent="Walkables" instance=ExtResource( 8 )]
+transform = Transform( 0.44907, 0.0355939, 0.892787, 0.660141, 0.660141, -0.358368, -0.602121, 0.750298, 0.272952, -2, 4.58, -7.78 )
 
-[node name="Walkable11" parent="Walkables" instance=ExtResource( 1 )]
-transform = Transform( 0.44907, 0.0355939, 0.892787, 0.660141, 0.660141, -0.358368, -0.602121, 0.750298, 0.272952, -2.02179, 4.58212, -7.784 )
+[node name="Dummy_Brick2" parent="Walkables" instance=ExtResource( 8 )]
+transform = Transform( 0.204035, 0.131666, 0.176165, -0.0875458, -0.171818, 0.229813, 0.201756, -0.207708, -0.0784336, -1.3, 1.3, -7.38 )
 
-[node name="Walkable13" parent="Walkables" instance=ExtResource( 1 )]
-transform = Transform( 0.172462, 0.110327, 0.143474, -0.0710742, -0.140976, 0.193841, 0.16645, -0.174509, -0.0658863, -1.31702, 1.29081, -7.34503 )
-
-[node name="Walkable12" parent="Walkables" instance=ExtResource( 1 )]
-transform = Transform( 0.34282, -0.362213, -0.0357223, 0.33007, 0.330071, -0.179184, 0.153387, 0.0992741, 0.465421, 2.56693, 2.50216, -7.784 )
+[node name="Dummy_Brick3" parent="Walkables" instance=ExtResource( 8 )]
+transform = Transform( 0.261206, -0.424954, 0.0344261, 0.41486, 0.244031, -0.135424, 0.0982963, 0.0993115, 0.480078, 2.5, 2.5, -7.7 )
 
 [node name="Walkable9" parent="Walkables" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+visible = false
 
 [node name="Walkable10" parent="Walkables" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4 )
+visible = false
 
 [node name="Area" type="Area" parent="."]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.815, -6.52981 )
