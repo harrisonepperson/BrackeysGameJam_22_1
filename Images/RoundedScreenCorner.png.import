@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/z.png-cc431dae0875646e1264be3aa6e76f4d.stex"
+path="res://.import/RoundedScreenCorner.png-c622c1ef9957b80f0d7f9986452f67b4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/z.png"
-dest_files=[ "res://.import/z.png-cc431dae0875646e1264be3aa6e76f4d.stex" ]
+source_file="res://Images/RoundedScreenCorner.png"
+dest_files=[ "res://.import/RoundedScreenCorner.png-c622c1ef9957b80f0d7f9986452f67b4.stex" ]
 
 [params]
 

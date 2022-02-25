@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Materials/WalkHintLetter.tres" type="Material" id=1]
 [ext_resource path="res://Materials/WalkHintBox.tres" type="Material" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Materials/Ground.tres" type="Material" id=7]
 [ext_resource path="res://Images/joy_inner.png" type="Texture" id=8]
 [ext_resource path="res://Images/joy_outer.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/Rounded_Rectangle_Viewport.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/Scripts/Joy_Area.cs" type="Script" id=11]
 
 [sub_resource type="CapsuleShape" id=3]
@@ -281,6 +282,8 @@ transform = Transform( 0.939693, -0.219846, 0.262002, 0, 0.766044, 0.642787, -0.
 transform = Transform( 1, -2.98023e-08, 1.49012e-08, 1.49012e-08, 1, 2.98023e-08, 0, -2.98023e-08, 1, 0, 0, 5 )
 current = true
 fov = 90.0
+
+[node name="Rounded_Rectangle_Viewport" parent="Camera_Carrier/Camera" instance=ExtResource( 10 )]
 
 [node name="JoyStick" type="Control" parent="Camera_Carrier/Camera"]
 visible = false
