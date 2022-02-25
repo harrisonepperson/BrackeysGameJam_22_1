@@ -8,7 +8,7 @@
 [ext_resource path="res://Scenes/Menu/Scripts/CameraMovement.cs" type="Script" id=6]
 [ext_resource path="res://Scenes/Menu/MenuIntroFade.cs" type="Script" id=7]
 [ext_resource path="res://Scenes/Dummy_Brick.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Images/Menu/begin.png" type="Texture" id=9]
+[ext_resource path="res://Images/Menu/Begin.png" type="Texture" id=9]
 
 [sub_resource type="ProceduralSky" id=6]
 sky_top_color = Color( 0.054902, 0.054902, 0.14902, 1 )

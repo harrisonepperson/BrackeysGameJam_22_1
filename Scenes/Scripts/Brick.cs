@@ -91,7 +91,7 @@ public class Brick : Area
 	
 	private void _on_Brick_input_event(object camera, object @event, Vector3 position, Vector3 normal, int shape_idx)
 	{
-		if (OS.HasTouchscreenUiHint()) {
+		if (!playerOnBlock && OS.HasTouchscreenUiHint()) {
 			if (@event is InputEventScreenTouch touch && touch.Pressed)
 			{
 				isRotating = true;

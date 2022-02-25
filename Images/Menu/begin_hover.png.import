@@ -14,7 +14,7 @@ dest_files=[ "res://.import/begin_hover.png-8c0a4dc5e7b1853bb92e6ba37c5493a9.ste
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
