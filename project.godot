@@ -26,6 +26,10 @@ boot_splash/image="res://Images/Menu/title.png"
 boot_splash/bg_color=Color( 0.054902, 0.054902, 0.14902, 1 )
 config/icon="res://Images/Menu/icon.png"
 
+[audio]
+
+output_latency.web=100
+
 [autoload]
 
 Singleton="*res://Scenes/Scripts/Singleton.cs"
