@@ -9,7 +9,7 @@
 [ext_resource path="res://Materials/Ground.tres" type="Material" id=7]
 [ext_resource path="res://Images/joy_inner.png" type="Texture" id=8]
 [ext_resource path="res://Images/joy_outer.png" type="Texture" id=9]
-[ext_resource path="res://Images/RoundedScreenCorner.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/Rounded_Rectangle_Viewport.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/Scripts/Joy_Area.cs" type="Script" id=11]
 
 [sub_resource type="CapsuleShape" id=3]
@@ -283,71 +283,7 @@ transform = Transform( 1, -2.98023e-08, 1.49012e-08, 1.49012e-08, 1, 2.98023e-08
 current = true
 fov = 90.0
 
-[node name="Control" type="Control" parent="Camera_Carrier/Camera"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TopLeft" type="Control" parent="Camera_Carrier/Camera/Control"]
-margin_right = 64.0
-margin_bottom = 64.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RoundedScreenCorner" type="Sprite" parent="Camera_Carrier/Camera/Control/TopLeft"]
-texture = ExtResource( 10 )
-centered = false
-
-[node name="TopRight" type="Control" parent="Camera_Carrier/Camera/Control"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -64.0
-margin_bottom = 64.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RoundedScreenCorner" type="Sprite" parent="Camera_Carrier/Camera/Control/TopRight"]
-position = Vector2( 64, 0 )
-rotation = 1.5708
-texture = ExtResource( 10 )
-centered = false
-
-[node name="BottomLeft" type="Control" parent="Camera_Carrier/Camera/Control"]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_top = -64.0
-margin_right = 64.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RoundedScreenCorner" type="Sprite" parent="Camera_Carrier/Camera/Control/BottomLeft"]
-position = Vector2( 0, 64 )
-rotation = -1.5708
-texture = ExtResource( 10 )
-centered = false
-
-[node name="BottomRight" type="Control" parent="Camera_Carrier/Camera/Control"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -64.0
-margin_top = -64.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RoundedScreenCorner" type="Sprite" parent="Camera_Carrier/Camera/Control/BottomRight"]
-position = Vector2( 64, 64 )
-rotation = 3.14159
-texture = ExtResource( 10 )
-centered = false
+[node name="Rounded_Rectangle_Viewport" parent="Camera_Carrier/Camera" instance=ExtResource( 10 )]
 
 [node name="JoyStick" type="Control" parent="Camera_Carrier/Camera"]
 visible = false
