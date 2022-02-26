@@ -1,6 +1,5 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://Scenes/Walkable.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Fonts/Colus/Colus-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Materials/Goal.tres" type="Material" id=3]
 [ext_resource path="res://Scenes/Menu/Scripts/OutroBG.cs" type="Script" id=4]
@@ -60,17 +59,6 @@ transform = Transform( 1, 0, 0, 0, 0.936109, -0.351711, 0, 0.351711, 0.936109, 0
 fov = 35.0
 
 [node name="Universal_Viewport" parent="Spatial/Camera" instance=ExtResource( 7 )]
-
-[node name="Walkables" type="Spatial" parent="."]
-
-[node name="Walkable11" parent="Walkables" instance=ExtResource( 1 )]
-transform = Transform( 0.44907, 0.0355939, 0.892787, 0.660141, 0.660141, -0.358368, -0.602121, 0.750298, 0.272952, -2.02179, 4.58212, -7.784 )
-
-[node name="Walkable13" parent="Walkables" instance=ExtResource( 1 )]
-transform = Transform( 0.172462, 0.110327, 0.143474, -0.0710742, -0.140976, 0.193841, 0.16645, -0.174509, -0.0658863, -1.31702, 1.29081, -7.34503 )
-
-[node name="Walkable12" parent="Walkables" instance=ExtResource( 1 )]
-transform = Transform( 0.34282, -0.362213, -0.0357223, 0.33007, 0.330071, -0.179184, 0.153387, 0.0992741, 0.465421, 2.56693, 2.50216, -7.784 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

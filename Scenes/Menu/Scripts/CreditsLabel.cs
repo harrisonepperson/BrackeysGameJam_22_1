@@ -26,6 +26,9 @@ public class CreditsLabel : Label
 		{
 			GetTree().ChangeScene(nextScene);
 		}
+		if (OS.HasTouchscreenUiHint() && e is InputEventScreenTouch touch && touch.Pressed) {
+			GetTree().ChangeScene(nextScene);
+		}
 	}
 }
 

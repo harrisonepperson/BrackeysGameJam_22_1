@@ -21,8 +21,8 @@ public class Begin : Sprite3D
 
 	public override void _Ready()
 	{
-		MenuLogo = GetNode<Sprite>("../../CanvasLayer/menu/Center/Logo");
-		MenuText = GetNode<Label>("../../CanvasLayer/menu/Center/Label");
+		MenuLogo = GetNode<Sprite>("../../Spatial/Camera/menu/Center/Logo");
+		MenuText = GetNode<Label>("../../Spatial/Camera/menu/Center/Label");
 		goal = GetNode<Goal>("../../Goal");
 
 		var transparent = MenuLogo.Modulate;
