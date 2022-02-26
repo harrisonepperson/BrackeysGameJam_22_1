@@ -1,11 +1,11 @@
 using Godot;
 using System;
 
-public class OutroBG : Panel
+public class CreditsBG : Panel
 {
 	private ulong time_start = 0;
 	
-	private string nextScene = "res://Scenes/Menu/Credits.tscn";
+	private string nextScene = "res://Scenes/Menu/Menu3D.tscn";
 	public override void _Ready()
 	{
 		GD.Load<PackedScene>(nextScene);
