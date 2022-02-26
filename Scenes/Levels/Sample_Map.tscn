@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Walkable.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/SpawnPoint.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scenes/Bricks/T_Brick.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Bricks/Dead_End_Brick.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Bricks/Corner_Brick.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Decoration/Ambient_Nature_Collection.tscn" type="PackedScene" id=9]
 
 [node name="Spatial" type="Spatial"]
 __meta__ = {
@@ -67,3 +68,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 collision_layer = 8
 collision_mask = 8
 input_ray_pickable = false
+
+[node name="ambient_nature_collection" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -12 )

@@ -1,0 +1,42 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://Images/Butterfly.png" type="Texture" id=1]
+
+[sub_resource type="Shader" id=14]
+code = "shader_type spatial;
+render_mode cull_disabled;
+
+uniform sampler2D tex;
+uniform vec4 color1 : hint_color;
+uniform vec4 color2 : hint_color;
+uniform float displ_amnt = 0.8;
+uniform float displ_speed = 20.0;
+uniform float pi = 3.14159265359;
+
+void vertex()
+{
+	float mask = 1.0 - sin(pi * UV.y);
+	float rand_val = COLOR.x * 10.0;
+	VERTEX.y += sin(rand_val + TIME * displ_speed) * displ_amnt * mask;
+	
+//	MODELVIEW_MATRIX = INV_CAMERA_MATRIX * mat4(CAMERA_MATRIX[0],CAMERA_MATRIX[1],CAMERA_MATRIX[2],WORLD_MATRIX[3]);
+}
+
+void fragment()
+{
+	float rand_val = COLOR[0] * COLOR[1] * COLOR[2];
+	vec4 col = texture(tex, vec2(UV.y, UV.x));
+	ALPHA_SCISSOR = 0.01;
+	ALPHA = col.a;
+	ALBEDO = vec3(COLOR[0],COLOR[1],COLOR[2]);
+	EMISSION = vec3(COLOR[0],COLOR[1],COLOR[2]) * 2.0;
+}"
+
+[resource]
+shader = SubResource( 14 )
+shader_param/color1 = Color( 0.898039, 0, 1, 1 )
+shader_param/color2 = Color( 0.447059, 1, 0.505882, 1 )
+shader_param/displ_amnt = 0.8
+shader_param/displ_speed = 4.0
+shader_param/pi = 3.14159
+shader_param/tex = ExtResource( 1 )

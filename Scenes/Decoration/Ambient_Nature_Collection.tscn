@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Materials/Plant_Brown.tres" type="Material" id=1]
 [ext_resource path="res://Materials/Plant_Green.tres" type="Material" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Meshes/flower_oriented.tres" type="ArrayMesh" id=5]
 [ext_resource path="res://Scenes/Scripts/Ambient_Nature_Collection.cs" type="Script" id=6]
 [ext_resource path="res://Scenes/Walkable.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Materials/butterfly_Flap.tres" type="Material" id=8]
 
 [sub_resource type="ArrayMesh" id=3]
 resource_name = "Circle"
@@ -22,6 +23,9 @@ surfaces/0 = {
 "skeleton_aabb": [  ],
 "vertex_count": 401
 }
+
+[sub_resource type="BoxShape" id=20]
+extents = Vector3( 1.8, 4, 1.8 )
 
 [sub_resource type="ArrayMesh" id=6]
 resource_name = "Mesh"
@@ -142,6 +146,51 @@ color = Color( 0.301961, 0, 0.298039, 1 )
 hue_variation = 0.07
 hue_variation_random = 1.0
 
+[sub_resource type="Curve" id=14]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.171233, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.859589, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=15]
+curve = SubResource( 14 )
+
+[sub_resource type="ParticlesMaterial" id=16]
+emission_shape = 1
+emission_sphere_radius = 1.0
+flag_align_y = true
+flag_rotate_y = true
+direction = Vector3( 0, 1, 0 )
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.01
+damping = 1.0
+angle = 147.7
+angle_random = 1.0
+scale = 0.1
+scale_curve = SubResource( 15 )
+color = Color( 0, 0.546697, 0.675293, 1 )
+hue_variation = -0.14
+hue_variation_random = 1.0
+
+[sub_resource type="PlaneMesh" id=17]
+material = ExtResource( 8 )
+subdivide_width = 4
+subdivide_depth = 4
+
+[sub_resource type="Animation" id=19]
+resource_name = "Spin"
+length = 30.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Floater/Butterflies:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 15, 30 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -15, 0, -20 ), Vector3( 15, 180, -20 ), Vector3( -15, 360, -20 ) ]
+}
+
 [node name="ambient_nature_collection" type="Spatial"]
 script = ExtResource( 6 )
 
@@ -154,26 +203,34 @@ mesh = SubResource( 3 )
 skeleton = NodePath("../..")
 material/0 = ExtResource( 3 )
 
-[node name="Tree" type="Spatial" parent="Floater"]
+[node name="Tree" type="RigidBody" parent="Floater"]
+collision_layer = 2
+gravity_scale = 0.0
+
+[node name="Collider" type="CollisionShape" parent="Floater/Tree"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+shape = SubResource( 20 )
+
+[node name="Tree" type="Spatial" parent="Floater/Tree"]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 
-[node name="Leaves" type="MeshInstance" parent="Floater/Tree"]
+[node name="Leaves" type="MeshInstance" parent="Floater/Tree/Tree"]
 transform = Transform( 0.590677, 0, 0, 0, 0.590677, 0, 0, 0, 0.590677, -1.06216, 2.42779, -0.0838867 )
 mesh = SubResource( 6 )
-skeleton = NodePath("../../..")
+skeleton = NodePath("../../../..")
 material/0 = ExtResource( 2 )
 
-[node name="Trunk" type="MeshInstance" parent="Floater/Tree"]
+[node name="Trunk" type="MeshInstance" parent="Floater/Tree/Tree"]
 mesh = SubResource( 7 )
-skeleton = NodePath("../../..")
+skeleton = NodePath("../../../..")
 material/0 = ExtResource( 1 )
 
-[node name="Root" type="MeshInstance" parent="Floater/Tree"]
+[node name="Root" type="MeshInstance" parent="Floater/Tree/Tree"]
 mesh = SubResource( 4 )
-skeleton = NodePath("../../..")
+skeleton = NodePath("../../../..")
 material/0 = ExtResource( 1 )
 
-[node name="Falling Leaves" type="Particles" parent="Floater/Tree"]
+[node name="Falling Leaves" type="Particles" parent="Floater/Tree/Tree"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.52679, 0 )
 amount = 30
 lifetime = 5.0
@@ -198,7 +255,7 @@ skeleton = NodePath("../../..")
 material/0 = ExtResource( 2 )
 
 [node name="Flower_Patch" type="Particles" parent="Floater"]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+transform = Transform( -2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 0, 0, 0 )
 amount = 30
 lifetime = 60.0
 preprocess = 60.0
@@ -207,3 +264,19 @@ draw_pass_1 = ExtResource( 5 )
 
 [node name="Vines" type="Spatial" parent="Floater"]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+
+[node name="Butterflies" type="Spatial" parent="Floater"]
+transform = Transform( 1.87938, 0.68404, 0, -0.660732, 1.81535, 0.517638, 0.177043, -0.486421, 1.93185, 0, 2, 0 )
+
+[node name="Flap" type="Particles" parent="Floater/Butterflies"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+amount = 30
+lifetime = 10.0
+preprocess = 15.0
+process_material = SubResource( 16 )
+draw_pass_1 = SubResource( 17 )
+
+[node name="Spin" type="AnimationPlayer" parent="Floater/Butterflies"]
+root_node = NodePath("../../..")
+autoplay = "Spin"
+anims/Spin = SubResource( 19 )
