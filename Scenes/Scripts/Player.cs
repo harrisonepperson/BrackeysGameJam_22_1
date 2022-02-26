@@ -138,10 +138,10 @@ public class Player : KinematicBody
 		}
 		
 		if (
-			Input.IsActionJustPressed("move_forward") ||
-			Input.IsActionJustPressed("move_backward") ||
-			Input.IsActionJustPressed("move_left") ||
-			Input.IsActionJustPressed("move_right") ||
+			Input.IsActionPressed("move_forward") ||
+			Input.IsActionPressed("move_backward") ||
+			Input.IsActionPressed("move_left") ||
+			Input.IsActionPressed("move_right") ||
 			joyHeading != Vector2.Zero
 		)
 		{
@@ -149,19 +149,19 @@ public class Player : KinematicBody
 			Vector3 pos = Translation;
 			Vector3 dir = new Vector3(0, 0, 0);
 			
-			if (Input.IsActionJustPressed("move_forward") || joyHeading == Vector2.Up)
+			if (Input.IsActionPressed("move_forward") || joyHeading == Vector2.Up)
 			{
 				dir.z -= stepScale;
 			}
-			else if (Input.IsActionJustPressed("move_backward") || joyHeading == Vector2.Down)
+			else if (Input.IsActionPressed("move_backward") || joyHeading == Vector2.Down)
 			{
 				dir.z += stepScale;
 			}
-			else if (Input.IsActionJustPressed("move_left") || joyHeading == Vector2.Left)
+			else if (Input.IsActionPressed("move_left") || joyHeading == Vector2.Left)
 			{
 				dir.x -= stepScale;
 			}
-			else if (Input.IsActionJustPressed("move_right") || joyHeading == Vector2.Right)
+			else if (Input.IsActionPressed("move_right") || joyHeading == Vector2.Right)
 			{
 				dir.x += stepScale;
 			}

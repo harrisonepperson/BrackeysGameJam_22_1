@@ -5,12 +5,12 @@
 [ext_resource path="res://Particles/Snores_Material.tres" type="QuadMesh" id=3]
 [ext_resource path="res://Scenes/Scripts/Player.cs" type="Script" id=4]
 [ext_resource path="res://Audio/Sounds/player_move.mp3" type="AudioStream" id=5]
-[ext_resource path="res://Meshes/character2.glb" type="PackedScene" id=6]
 [ext_resource path="res://Materials/Ground.tres" type="Material" id=7]
 [ext_resource path="res://Images/joy_inner.png" type="Texture" id=8]
 [ext_resource path="res://Images/joy_outer.png" type="Texture" id=9]
 [ext_resource path="res://Scenes/Universal_Viewport.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/Scripts/Joy_Area.cs" type="Script" id=11]
+[ext_resource path="res://Meshes/character_matte.tscn" type="PackedScene" id=12]
 
 [sub_resource type="CapsuleShape" id=3]
 radius = 0.2
@@ -213,7 +213,7 @@ curve = SubResource( 21 )
 direction = Vector3( 0, 20, 0 )
 spread = 22.0
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 2.0
+initial_velocity = 1.0
 damping_curve = SubResource( 20 )
 scale = 0.2
 scale_random = 0.11
@@ -255,18 +255,6 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=36]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("Heading_Container/Hopping_Container/character:translation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0, -0.15, 0 ) ]
-}
 
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 4 )
@@ -431,7 +419,7 @@ collision_mask = 4
 debug_shape_custom_color = Color( 0, 1, 0, 1 )
 debug_shape_thickness = 5.0
 
-[node name="character" parent="Heading_Container/Hopping_Container" instance=ExtResource( 6 )]
+[node name="character" parent="Heading_Container/Hopping_Container" instance=ExtResource( 12 )]
 transform = Transform( -4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, -0.15, 0 )
 
 [node name="HopAnim" type="AnimationPlayer" parent="."]
