@@ -81,7 +81,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4 )
 visible = false
 
 [node name="Area" type="Area" parent="."]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.815, -6.52981 )
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.815, -5.90978 )
 
 [node name="begin" type="Sprite3D" parent="Area"]
 texture = ExtResource( 9 )
