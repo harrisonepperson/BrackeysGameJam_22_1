@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Walkable.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/SpawnPoint.tscn" type="PackedScene" id=2]
@@ -7,6 +7,21 @@
 [ext_resource path="res://Scenes/Bricks/Dead_End_Brick.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Bricks/Corner_Brick.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Decoration/Ambient_Nature_Collection.tscn" type="PackedScene" id=9]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 5, 1, 1 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 13, 1, 1 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 11, 1, 1 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 7, 1, 1 )
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 3, 1, 1 )
 
 [node name="Spatial" type="Spatial"]
 __meta__ = {
@@ -38,9 +53,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 1, 6 )
 [node name="SpawnPoint" parent="." instance=ExtResource( 2 )]
 
 [node name="Walkables" type="Spatial" parent="."]
-
-[node name="Walkable1" parent="Walkables" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -12 )
 
 [node name="Walkable7" parent="Walkables" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -10 )
@@ -540,6 +552,120 @@ collision_layer = 8
 collision_mask = 8
 input_ray_pickable = false
 
+[node name="CollisionShape" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 10 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, -28 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, -20 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -34 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="Walls"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape8" type="CollisionShape" parent="Walls"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -34, 0, 6 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape9" type="CollisionShape" parent="Walls"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -26, 0, 6 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape10" type="CollisionShape" parent="Walls"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -40, 0, -24 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape11" type="CollisionShape" parent="Walls"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 0, -30 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape12" type="CollisionShape" parent="Walls"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, -30 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape13" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -26 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape14" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 2 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape15" type="CollisionShape" parent="Walls"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -32, 0, -10 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape16" type="CollisionShape" parent="Walls"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, -14 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape17" type="CollisionShape" parent="Walls"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8, 0, -16 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape18" type="CollisionShape" parent="Walls"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -28, 0, -8 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape19" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -22, 0, -22 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape20" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -14, 0, -2 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape21" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -22, 0, -18 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape22" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -14, 0, -6 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape23" type="CollisionShape" parent="Walls"]
+transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -12, 0, -16 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape24" type="CollisionShape" parent="Walls"]
+transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -24, 0, -8 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape25" type="CollisionShape" parent="Walls"]
+transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -20, 0, -8 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape26" type="CollisionShape" parent="Walls"]
+transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -16, 0, -16 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape27" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, -1.3411e-07, 0, 1, 0, 1.3411e-07, 0, 1, -22, 0, -14 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape28" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, -1.3411e-07, 0, 1, 0, 1.3411e-07, 0, 1, -14, 0, -10 )
+shape = SubResource( 5 )
+
 [node name="ambient_nature_collection" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0, -12 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -12 )
 visible = false
+showFallingLeaves = false
+showButterflies = true
