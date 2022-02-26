@@ -1,0 +1,267 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Scenes/Bricks/Corner_Brick.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Goal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Walkable.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Bricks/Tunnel_Brick.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Bricks/Dead_End_Brick.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Bricks/T_Brick.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/SpawnPoint.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Audio/Sounds/cavern_ambience.mp3" type="AudioStream" id=9]
+
+[sub_resource type="BoxShape" id=15]
+extents = Vector3( 1, 1, 5 )
+
+[sub_resource type="Gradient" id=10]
+offsets = PoolRealArray( 0, 0.199346 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 10 )
+width = 1
+
+[sub_resource type="Curve" id=11]
+_data = [ Vector2( 0.246032, 0 ), 0.0, -0.116529, 0, 0, Vector2( 0.468254, 0.851136 ), 0.0, 0.0, 0, 0, Vector2( 0.706349, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=9]
+curve = SubResource( 11 )
+
+[sub_resource type="ParticlesMaterial" id=12]
+direction = Vector3( 0, 1, 0 )
+spread = 2.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 1.5
+initial_velocity_random = 0.1
+scale = 0.03
+scale_curve = SubResource( 9 )
+color_ramp = SubResource( 7 )
+
+[sub_resource type="SpatialMaterial" id=13]
+flags_do_not_receive_shadows = true
+vertex_color_use_as_albedo = true
+params_cull_mode = 2
+albedo_color = Color( 0.921569, 0.94902, 0.109804, 1 )
+emission_enabled = true
+emission = Color( 0.94902, 0.639216, 0.109804, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="CubeMesh" id=14]
+material = SubResource( 13 )
+
+[node name="Spatial" type="Spatial"]
+__meta__ = {
+"_editor_description_": "So you want to design a map?  Great!
+Couple of things to keep in mind before you get started:
+
+- Bricks should be added as children of walkables.  We've provided one of each type on this level for your copying convenience.
+- Walkables should be on a flat horizontal plain.
+- Every Level needs 1 SpawnPoint
+	- This provides the lighting, environment, and player
+- Every Level needs 1 Goal
+	- This should have a packed scene provided to it to indicate what the next level to load is
+- The Walls object should be populated with walls that are unique to the current level (don't copy them across levels)
+	- As we edit various levels, if the walls are copied over we risk unintentional effects when editting colliders extents.
+- Every level should be beatable (player can navigate to the goal)
+
+Keep those things in mind and you're on your way to building a great level!"
+}
+
+[node name="Goal" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -22.0128 )
+
+[node name="SpawnPoint" parent="." instance=ExtResource( 8 )]
+
+[node name="Walkables" type="Spatial" parent="."]
+
+[node name="Walkable1" parent="Walkables" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4 )
+
+[node name="Walkable6" parent="Walkables" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.01497 )
+
+[node name="ThreeWay" parent="Walkables/Walkable6" instance=ExtResource( 7 )]
+
+[node name="Walkable2" parent="Walkables" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.96802 )
+
+[node name="Tunnel" parent="Walkables/Walkable2" instance=ExtResource( 5 )]
+
+[node name="Walkable3" parent="Walkables" instance=ExtResource( 4 )]
+transform = Transform( 0.999972, 0, 0.00746994, 0, 1, 0, -0.00746994, 0, 0.999972, 2.03523, 0, -9.95537 )
+
+[node name="Dead End" parent="Walkables/Walkable3" instance=ExtResource( 6 )]
+
+[node name="Walkable4" parent="Walkables" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0313032, 0, -9.98512 )
+
+[node name="Corner" parent="Walkables/Walkable4" instance=ExtResource( 2 )]
+
+[node name="Walkable7" parent="Walkables" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01781, 0, -11.9799 )
+
+[node name="Tunnel" parent="Walkables/Walkable7" instance=ExtResource( 5 )]
+
+[node name="Walkable8" parent="Walkables" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0313034, 0, -12.0029 )
+
+[node name="Corner" parent="Walkables/Walkable8" instance=ExtResource( 2 )]
+
+[node name="Walkable9" parent="Walkables" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.06692, 0, -12.0029 )
+
+[node name="Corner" parent="Walkables/Walkable9" instance=ExtResource( 2 )]
+
+[node name="Walkable10" parent="Walkables" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.06692, 0, -13.997 )
+
+[node name="Corner" parent="Walkables/Walkable10" instance=ExtResource( 2 )]
+
+[node name="Walkable11" parent="Walkables" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.02537, 0, -13.997 )
+
+[node name="Corner" parent="Walkables/Walkable11" instance=ExtResource( 2 )]
+
+[node name="Walkable12" parent="Walkables" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02537, 0, -15.9911 )
+
+[node name="Corner" parent="Walkables/Walkable12" instance=ExtResource( 2 )]
+
+[node name="Walkable13" parent="Walkables" instance=ExtResource( 4 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.00756478, 0, -15.9911 )
+
+[node name="Corner" parent="Walkables/Walkable13" instance=ExtResource( 2 )]
+
+[node name="Walkable14" parent="Walkables" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0232813, 0, -17.9838 )
+
+[node name="Tunnel" parent="Walkables/Walkable14" instance=ExtResource( 5 )]
+
+[node name="Walkable15" parent="Walkables" instance=ExtResource( 4 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.97855, 0, -9.95537 )
+
+[node name="Dead End" parent="Walkables/Walkable15" instance=ExtResource( 6 )]
+
+[node name="Walkable16" parent="Walkables" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.99598, 0, -11.9799 )
+
+[node name="Tunnel" parent="Walkables/Walkable16" instance=ExtResource( 5 )]
+
+[node name="Walkable17" parent="Walkables" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.97994, 0, -13.997 )
+
+[node name="Corner" parent="Walkables/Walkable17" instance=ExtResource( 2 )]
+
+[node name="Walkable18" parent="Walkables" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.98634, 0, -15.9911 )
+
+[node name="Corner" parent="Walkables/Walkable18" instance=ExtResource( 2 )]
+
+[node name="Walkable19" parent="Walkables" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.9831, 0, -12.0029 )
+
+[node name="Corner" parent="Walkables/Walkable19" instance=ExtResource( 2 )]
+
+[node name="Walkable20" parent="Walkables" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.97518, 0, -13.997 )
+
+[node name="Corner" parent="Walkables/Walkable20" instance=ExtResource( 2 )]
+
+[node name="Walls" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+collision_layer = 8
+collision_mask = 8
+input_ray_pickable = false
+
+[node name="CollisionShape9" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.7958, -0.89015, 0.487366 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape8" type="CollisionShape" parent="Walls"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0671043, -1, 3.86291 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape10" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.90485, -0.89015, 0.487366 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape11" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 9.05975e-08, 0, 1, 0, -1.50996e-07, 0, -0.6, 2.06273, -0.89015, -5.82415 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape12" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 9.05975e-08, 0, 1, 0, -1.50996e-07, 0, -0.6, -1.95369, -0.89015, -5.82415 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape13" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 9.05975e-08, 0, 1, 0, -1.50996e-07, 0, -0.6, -3.9468, -0.89015, -7.90786 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape14" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 9.05975e-08, 0, 1, 0, -1.50996e-07, 0, -0.6, -6.1211, -0.89015, -12.7396 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape15" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 9.05975e-08, 0, 1, 0, -1.50996e-07, 0, -0.6, 4.11624, -0.89015, -7.90786 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape16" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 9.05975e-08, 0, 1, 0, -1.50996e-07, 0, -0.6, 6.16975, -0.89015, -12.4377 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape17" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 9.05975e-08, 0, 1, 0, -1.50996e-07, 0, -0.6, 4.14644, -0.89015, -18.0546 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape18" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 9.05975e-08, 0, 1, 0, -1.50996e-07, 0, -0.6, -4.12799, -0.89015, -18.0546 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape19" type="CollisionShape" parent="Walls"]
+transform = Transform( -1.07284e-07, 0, -0.6, 0, 1, 0, 1, 0, -6.43707e-08, -4.12799, -0.89015, -18.0546 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape20" type="CollisionShape" parent="Walls"]
+transform = Transform( -1.07284e-07, 0, -0.6, 0, 1, 0, 1, 0, -6.43707e-08, 4.01885, -0.89015, -18.0546 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape21" type="CollisionShape" parent="Walls"]
+transform = Transform( -1.07284e-07, 0, -0.6, 0, 1, 0, 1, 0, -6.43707e-08, 0.0762541, -0.89015, -26.0294 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape22" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 9.05975e-08, 0, 1, 0, -1.50996e-07, 0, -0.6, 4.14644, -0.89015, -23.1322 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape23" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 9.05975e-08, 0, 1, 0, -1.50996e-07, 0, -0.6, -4.12799, -0.89015, -23.1621 )
+shape = SubResource( 15 )
+
+[node name="spotlight2" type="OmniLight" parent="."]
+transform = Transform( -0.120986, 0.0929553, 0.988292, 0.98969, 0.0881805, 0.112864, -0.0766569, 0.991758, -0.102666, -0.0709982, 0.629142, -14.0764 )
+light_color = Color( 1, 0.6, 0.278431, 1 )
+light_energy = 6.0
+light_indirect_energy = 10.0
+light_specular = 4.0
+shadow_enabled = true
+omni_range = 5.83284
+
+[node name="Particles2" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.7054, -13.9529 )
+cast_shadow = 0
+amount = 64
+lifetime = 16.0
+explosiveness = 0.01
+randomness = 0.01
+visibility_aabb = AABB( -1.74277, -1.19247, -1.51211, 3.48554, 22.6222, 3.02421 )
+process_material = SubResource( 12 )
+draw_pass_1 = SubResource( 14 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.0022 )
+stream = ExtResource( 9 )
+unit_db = 30.0
+unit_size = 10.0
+autoplay = true
+max_distance = 8.0
