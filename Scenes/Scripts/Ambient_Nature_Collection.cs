@@ -7,25 +7,25 @@ public class Ambient_Nature_Collection : Spatial
 	private bool showGrassTop = true;
 	
 	[Export]
-	private bool showTree = true;
+	private bool showTree = false;
 	
 	[Export]
 	private bool showFallingLeaves = true;
 	
 	[Export]
-	private bool showFlowers = true;
+	private bool showFlowers = false;
 	
 	[Export]
-	private bool showButterflies = true;
+	private bool showButterflies = false;
 	
 	[Export]
-	private bool showVines = true;
+	private bool showVines = false;
 
 	public override void _Ready()
 	{
 		GetNode<RigidBody>("Floater/Tree").Visible = showTree;
 		GetNode<CollisionShape>("Floater/Tree/Collider").Disabled = !showTree;
-		GetNode<Particles>("Floater/Tree/Tree/Falling Leaves").Emitting = showFallingLeaves;
+		GetNode<Particles>("Floater/Tree/Tree/Falling Leaves").Emitting = showTree && showFallingLeaves;
 		GetNode<Spatial>("Floater/GrassTop").Visible = showGrassTop;
 		GetNode<Particles>("Floater/Flower_Patch").Emitting = showFlowers;
 		GetNode<Spatial>("Floater/Vines").Visible = showVines;
