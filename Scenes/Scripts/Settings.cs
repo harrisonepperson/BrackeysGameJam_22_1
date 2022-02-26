@@ -25,10 +25,8 @@ public class Settings : Popup
 	{
 		if (OS.HasTouchscreenUiHint() && !isModalOpen && @event is InputEventScreenTouch touch && touch.Pressed) {
 			PopupCenteredRatio();
-			isModalOpen = true;
 		} else if (!isModalOpen && @event is InputEventMouseButton click && click.ButtonIndex == 1 && click.Pressed) {
 			PopupCenteredRatio();
-			isModalOpen = true;
 		}
 	}
 	
@@ -39,6 +37,7 @@ public class Settings : Popup
 	
 	private void _on_Settings_about_to_show()
 	{
+		isModalOpen = true;
 		GetNode<CheckButton>("MarginContainer/GridContainer/Bloom_Choice").Pressed = singleton.bloomEnabled;
 		
 		GetNode<HSlider>("MarginContainer/GridContainer/Master_Audio_Level").Value = singleton.masterAudioLevel;

@@ -56,9 +56,8 @@ centered = false
 [node name="BottomLeft" type="Control" parent="Rounded_Rectangles"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -65.0
+margin_top = -64.0
 margin_right = 64.0
-margin_bottom = -1.0
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -77,8 +76,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -64.0
-margin_top = -65.0
-margin_bottom = -1.0
+margin_top = -64.0
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false

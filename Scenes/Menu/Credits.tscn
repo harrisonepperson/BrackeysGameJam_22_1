@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://Scenes/Walkable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Images/BrackeysGameJam.png" type="Texture" id=1]
 [ext_resource path="res://Fonts/Colus/Colus-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Materials/Goal.tres" type="Material" id=3]
 [ext_resource path="res://Scenes/Menu/Scripts/CreditsBG.cs" type="Script" id=4]
@@ -61,17 +61,6 @@ fov = 35.0
 
 [node name="Universal_Viewport" parent="Spatial/Camera" instance=ExtResource( 8 )]
 
-[node name="Walkables" type="Spatial" parent="."]
-
-[node name="Walkable11" parent="Walkables" instance=ExtResource( 1 )]
-transform = Transform( 0.44907, 0.0355939, 0.892787, 0.660141, 0.660141, -0.358368, -0.602121, 0.750298, 0.272952, -2.02179, 4.58212, -7.784 )
-
-[node name="Walkable13" parent="Walkables" instance=ExtResource( 1 )]
-transform = Transform( 0.172462, 0.110327, 0.143474, -0.0710742, -0.140976, 0.193841, 0.16645, -0.174509, -0.0658863, -1.31702, 1.29081, -7.34503 )
-
-[node name="Walkable12" parent="Walkables" instance=ExtResource( 1 )]
-transform = Transform( 0.34282, -0.362213, -0.0357223, 0.33007, 0.330071, -0.179184, 0.153387, 0.0992741, 0.465421, 2.56693, 2.50216, -7.784 )
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="BG" type="Panel" parent="CanvasLayer"]
@@ -82,18 +71,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Centered" type="Control" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BrackeysGameJam" type="Sprite" parent="CanvasLayer/Centered"]
+texture = ExtResource( 1 )
+offset = Vector2( 0, -20 )
+
 [node name="Text" type="Label" parent="CanvasLayer"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -190.5
-margin_top = -46.5
-margin_right = 190.5
-margin_bottom = 46.5
+margin_left = -135.5
+margin_top = -79.0
+margin_right = 135.5
+margin_bottom = 79.0
+size_flags_horizontal = 2
+size_flags_vertical = 3
 custom_colors/font_color = Color( 0.647059, 0.65098, 0.964706, 1 )
 custom_fonts/font = SubResource( 6 )
-text = "made by harrison and jay
+text = "made by harrison and jay for
+
+
+Game jam: 2022.1
 
 music by LudoLoon Studio
 sound fx from mixkit"
@@ -104,6 +111,7 @@ __meta__ = {
 }
 
 [node name="BGDark" type="Panel" parent="CanvasLayer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -114,6 +122,7 @@ __meta__ = {
 }
 
 [node name="Universal_Viewport" parent="CanvasLayer" instance=ExtResource( 8 )]
+visible = false
 
 [node name="Visual" type="MeshInstance" parent="."]
 transform = Transform( 33.5921, 0, 0, 0, 33.5921, 0, 0, 0, 33.5921, 0, 2, -26.311 )
