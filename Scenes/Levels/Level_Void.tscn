@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Bricks/Corner_Brick.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Goal.tscn" type="PackedScene" id=3]
@@ -8,6 +8,9 @@
 [ext_resource path="res://Scenes/Bricks/T_Brick.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/SpawnPoint.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Audio/Sounds/cavern_ambience.mp3" type="AudioStream" id=9]
+
+[sub_resource type="BoxShape" id=15]
+extents = Vector3( 1, 1, 5 )
 
 [sub_resource type="Gradient" id=10]
 offsets = PoolRealArray( 0, 0.199346 )
@@ -170,6 +173,70 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 collision_layer = 8
 collision_mask = 8
 input_ray_pickable = false
+
+[node name="CollisionShape9" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.7958, -0.89015, 0.487366 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape8" type="CollisionShape" parent="Walls"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0671043, -1, 3.86291 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape10" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.90485, -0.89015, 0.487366 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape11" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 9.05975e-08, 0, 1, 0, -1.50996e-07, 0, -0.6, 2.06273, -0.89015, -5.82415 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape12" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 9.05975e-08, 0, 1, 0, -1.50996e-07, 0, -0.6, -1.95369, -0.89015, -5.82415 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape13" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 9.05975e-08, 0, 1, 0, -1.50996e-07, 0, -0.6, -3.9468, -0.89015, -7.90786 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape14" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 9.05975e-08, 0, 1, 0, -1.50996e-07, 0, -0.6, -6.1211, -0.89015, -12.7396 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape15" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 9.05975e-08, 0, 1, 0, -1.50996e-07, 0, -0.6, 4.11624, -0.89015, -7.90786 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape16" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 9.05975e-08, 0, 1, 0, -1.50996e-07, 0, -0.6, 6.16975, -0.89015, -12.4377 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape17" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 9.05975e-08, 0, 1, 0, -1.50996e-07, 0, -0.6, 4.14644, -0.89015, -18.0546 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape18" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 9.05975e-08, 0, 1, 0, -1.50996e-07, 0, -0.6, -4.12799, -0.89015, -18.0546 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape19" type="CollisionShape" parent="Walls"]
+transform = Transform( -1.07284e-07, 0, -0.6, 0, 1, 0, 1, 0, -6.43707e-08, -4.12799, -0.89015, -18.0546 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape20" type="CollisionShape" parent="Walls"]
+transform = Transform( -1.07284e-07, 0, -0.6, 0, 1, 0, 1, 0, -6.43707e-08, 4.01885, -0.89015, -18.0546 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape21" type="CollisionShape" parent="Walls"]
+transform = Transform( -1.07284e-07, 0, -0.6, 0, 1, 0, 1, 0, -6.43707e-08, 0.0762541, -0.89015, -26.0294 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape22" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 9.05975e-08, 0, 1, 0, -1.50996e-07, 0, -0.6, 4.14644, -0.89015, -23.1322 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape23" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 9.05975e-08, 0, 1, 0, -1.50996e-07, 0, -0.6, -4.12799, -0.89015, -23.1621 )
+shape = SubResource( 15 )
 
 [node name="spotlight2" type="OmniLight" parent="."]
 transform = Transform( -0.120986, 0.0929553, 0.988292, 0.98969, 0.0881805, 0.112864, -0.0766569, 0.991758, -0.102666, -0.0709982, 0.629142, -14.0764 )
