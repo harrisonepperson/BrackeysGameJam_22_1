@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/z.png-cc431dae0875646e1264be3aa6e76f4d.stex"
+path="res://.import/cog.svg-76b1999388afbc01b18057ca21514311.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/z.png"
-dest_files=[ "res://.import/z.png-cc431dae0875646e1264be3aa6e76f4d.stex" ]
+source_file="res://Images/cog.svg"
+dest_files=[ "res://.import/cog.svg-76b1999388afbc01b18057ca21514311.stex" ]
 
 [params]
 
@@ -23,7 +23,7 @@ flags/repeat=0
 flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
-flags/srgb=1
+flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
@@ -32,4 +32,4 @@ process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=false
-svg/scale=1.0
+svg/scale=1.5

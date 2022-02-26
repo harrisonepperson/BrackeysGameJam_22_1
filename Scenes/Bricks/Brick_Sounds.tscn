@@ -2,5 +2,7 @@
 
 [ext_resource path="res://Audio/Sounds/block_rotate.mp3" type="AudioStream" id=1]
 
-[node name="Sounds" type="AudioStreamPlayer"]
+[node name="Sounds" type="AudioStreamPlayer3D"]
 stream = ExtResource( 1 )
+unit_db = 10.173
+bus = "Effects"

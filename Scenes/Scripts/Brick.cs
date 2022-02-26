@@ -13,12 +13,12 @@ public class Brick : Area
 	private bool playerOnBlock = false;
 	private float targetDegrees;
 	
-	AudioStreamPlayer blockRotateSound;
+	AudioStreamPlayer3D blockRotateSound;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		blockRotateSound = GetNode<AudioStreamPlayer>("Sounds");
+		blockRotateSound = GetNode<AudioStreamPlayer3D>("Sounds");
 		
 		view = GetNode<MeshInstance>("View_Target");
 		targetDegrees = RotationDegrees.y;

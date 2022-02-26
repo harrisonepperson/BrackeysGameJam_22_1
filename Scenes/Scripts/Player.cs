@@ -33,7 +33,7 @@ public class Player : KinematicBody
 	Spatial Hopping_Container;
 	Vector3 targetPos;
 	
-	AudioStreamPlayer playerMoveSound;
+	AudioStreamPlayer3D playerMoveSound;
 	Particles impactCrumbles;
 	Particles impactDust;
 	
@@ -47,7 +47,7 @@ public class Player : KinematicBody
 		Heading_Container = GetNode<Spatial>("Heading_Container");
 		Hopping_Container = GetNode<Spatial>("Heading_Container/Hopping_Container");
 		
-		playerMoveSound = GetNode<AudioStreamPlayer>("Heading_Container/Hopping_Container/Impact_Effects/Sound");
+		playerMoveSound = GetNode<AudioStreamPlayer3D>("Heading_Container/Hopping_Container/Impact_Effects/Sound");
 		impactCrumbles = GetNode<Particles>("Heading_Container/Hopping_Container/Impact_Effects/Crumbles");
 		impactDust = GetNode<Particles>("Heading_Container/Hopping_Container/Impact_Effects/Dust");
 		

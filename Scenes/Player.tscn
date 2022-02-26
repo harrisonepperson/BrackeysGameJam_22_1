@@ -9,7 +9,7 @@
 [ext_resource path="res://Materials/Ground.tres" type="Material" id=7]
 [ext_resource path="res://Images/joy_inner.png" type="Texture" id=8]
 [ext_resource path="res://Images/joy_outer.png" type="Texture" id=9]
-[ext_resource path="res://Scenes/Rounded_Rectangle_Viewport.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Universal_Viewport.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/Scripts/Joy_Area.cs" type="Script" id=11]
 
 [sub_resource type="CapsuleShape" id=3]
@@ -283,7 +283,7 @@ transform = Transform( 1, -2.98023e-08, 1.49012e-08, 1.49012e-08, 1, 2.98023e-08
 current = true
 fov = 90.0
 
-[node name="Rounded_Rectangle_Viewport" parent="Camera_Carrier/Camera" instance=ExtResource( 10 )]
+[node name="Universal_Viewport" parent="Camera_Carrier/Camera" instance=ExtResource( 10 )]
 
 [node name="JoyStick" type="Control" parent="Camera_Carrier/Camera"]
 visible = false
@@ -378,10 +378,16 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.400372, 0 )
 
 [node name="Hopping_Container" type="Spatial" parent="Heading_Container"]
 
+[node name="Listener" type="Listener" parent="Heading_Container/Hopping_Container"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.199628, 0 )
+current = true
+
 [node name="Impact_Effects" type="Spatial" parent="Heading_Container/Hopping_Container"]
 
-[node name="Sound" type="AudioStreamPlayer" parent="Heading_Container/Hopping_Container/Impact_Effects"]
+[node name="Sound" type="AudioStreamPlayer3D" parent="Heading_Container/Hopping_Container/Impact_Effects"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0 )
 stream = ExtResource( 5 )
+bus = "Effects"
 
 [node name="Dust" type="Particles" parent="Heading_Container/Hopping_Container/Impact_Effects"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0 )

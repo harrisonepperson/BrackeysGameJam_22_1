@@ -1,0 +1,240 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Images/RoundedScreenCorner.png" type="Texture" id=1]
+[ext_resource path="res://Images/cog.svg" type="Texture" id=2]
+[ext_resource path="res://Scenes/Scripts/Settings.cs" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 40, 40 )
+
+[node name="Universal_Viewport" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rounded_Rectangles" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+
+[node name="TopLeft" type="Control" parent="Rounded_Rectangles"]
+margin_right = 64.0
+margin_bottom = 64.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RoundedScreenCorner" type="Sprite" parent="Rounded_Rectangles/TopLeft"]
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="TopRight" type="Control" parent="Rounded_Rectangles"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 920.0
+margin_right = 984.0
+margin_bottom = 64.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RoundedScreenCorner" type="Sprite" parent="Rounded_Rectangles/TopRight"]
+position = Vector2( 64, 0 )
+rotation = 1.5708
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="BottomLeft" type="Control" parent="Rounded_Rectangles"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = 496.0
+margin_right = 64.0
+margin_bottom = 560.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RoundedScreenCorner" type="Sprite" parent="Rounded_Rectangles/BottomLeft"]
+position = Vector2( 0, 64 )
+rotation = -1.5708
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="BottomRight" type="Control" parent="Rounded_Rectangles"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 920.0
+margin_top = 496.0
+margin_right = 984.0
+margin_bottom = 560.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RoundedScreenCorner" type="Sprite" parent="Rounded_Rectangles/BottomRight"]
+position = Vector2( 64, 64 )
+rotation = 3.14159
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Settings_Toggle" type="Control" parent="."]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Area2D" parent="Settings_Toggle"]
+
+[node name="Shape" type="CollisionShape2D" parent="Settings_Toggle/Button"]
+shape = SubResource( 1 )
+
+[node name="Cog" type="Sprite" parent="Settings_Toggle"]
+texture = ExtResource( 2 )
+
+[node name="Settings" type="Popup" parent="."]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -256.0
+margin_top = -128.0
+margin_right = 256.0
+margin_bottom = 128.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Settings"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0901961, 0.0901961, 0.247059, 0.501961 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Settings"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="Settings/MarginContainer"]
+margin_right = 492.0
+margin_bottom = 236.0
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bloom_Label" type="Label" parent="Settings/MarginContainer/GridContainer"]
+margin_top = 13.0
+margin_right = 96.0
+margin_bottom = 27.0
+size_flags_horizontal = 2
+text = "Bloom Enabled"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bloom_Choice" type="CheckButton" parent="Settings/MarginContainer/GridContainer"]
+margin_left = 416.0
+margin_right = 492.0
+margin_bottom = 40.0
+pressed = true
+
+[node name="HSeparator" type="HSeparator" parent="Settings/MarginContainer/GridContainer"]
+margin_top = 44.0
+margin_right = 412.0
+margin_bottom = 48.0
+
+[node name="HSeparator2" type="HSeparator" parent="Settings/MarginContainer/GridContainer"]
+margin_left = 416.0
+margin_top = 44.0
+margin_right = 492.0
+margin_bottom = 48.0
+
+[node name="Master_Audio_Label" type="Label" parent="Settings/MarginContainer/GridContainer"]
+margin_top = 53.0
+margin_right = 123.0
+margin_bottom = 67.0
+size_flags_horizontal = 2
+text = "Master Audio Level"
+
+[node name="Master_Audio_Level" type="HSlider" parent="Settings/MarginContainer/GridContainer"]
+margin_left = 416.0
+margin_top = 52.0
+margin_right = 492.0
+margin_bottom = 68.0
+min_value = -10.0
+max_value = 0.0
+
+[node name="Music_Audio_Label" type="Label" parent="Settings/MarginContainer/GridContainer"]
+margin_top = 73.0
+margin_right = 117.0
+margin_bottom = 87.0
+size_flags_horizontal = 2
+text = "Music Audio Level"
+
+[node name="Music_Audio_Level" type="HSlider" parent="Settings/MarginContainer/GridContainer"]
+margin_left = 416.0
+margin_top = 72.0
+margin_right = 492.0
+margin_bottom = 88.0
+min_value = -10.0
+max_value = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFX_Audio_Label" type="Label" parent="Settings/MarginContainer/GridContainer"]
+margin_top = 93.0
+margin_right = 101.0
+margin_bottom = 107.0
+size_flags_horizontal = 2
+text = "SFX Audio Level"
+
+[node name="SFX_Audio_Level" type="HSlider" parent="Settings/MarginContainer/GridContainer"]
+margin_left = 416.0
+margin_top = 92.0
+margin_right = 492.0
+margin_bottom = 108.0
+min_value = -10.0
+max_value = 0.0
+
+[node name="Save" type="Button" parent="Settings"]
+anchor_left = 0.945
+anchor_top = 0.933
+anchor_right = 0.945
+anchor_bottom = 0.933
+margin_left = -41.0
+margin_top = -20.0
+text = "Save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="input_event" from="Settings_Toggle/Button" to="Settings" method="_on_Button_input_event"]
+[connection signal="about_to_show" from="Settings" to="Settings" method="_on_Settings_about_to_show"]
+[connection signal="popup_hide" from="Settings" to="Settings" method="_on_Settings_popup_hide"]
+[connection signal="button_up" from="Settings/Save" to="Settings" method="_on_Save_button_up"]

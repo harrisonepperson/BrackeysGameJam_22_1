@@ -81,6 +81,10 @@ restart={
  ]
 }
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [layer_names]
 
 3d_physics/layer_1="Player"
@@ -97,4 +101,6 @@ common/enable_pause_aware_picking=true
 quality/filters/sharpen_intensity=1.0
 quality/shadows/filter_mode=2
 environment/default_clear_color=Color( 0.054902, 0.054902, 0.14902, 1 )
+quality/filters/msaa=16
+quality/filters/use_fxaa=true
 environment/default_environment="res://default_env.tres"

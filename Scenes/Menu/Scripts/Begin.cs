@@ -37,7 +37,6 @@ public class Begin : Sprite3D
 		{
 			if (Input.IsActionJustPressed("Primary_Click"))
 			{
-				GD.PrintS("Clicked!");
 				goal.playAnimation();
 				fade = true;
 			}
