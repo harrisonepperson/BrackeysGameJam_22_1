@@ -16,9 +16,12 @@ __meta__ = {
 }
 
 [node name="Rounded_Rectangles" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TopLeft" type="Control" parent="Rounded_Rectangles"]
 margin_right = 64.0
@@ -36,8 +39,7 @@ centered = false
 [node name="TopRight" type="Control" parent="Rounded_Rectangles"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = 920.0
-margin_right = 984.0
+margin_left = -64.0
 margin_bottom = 64.0
 mouse_filter = 2
 __meta__ = {
@@ -54,9 +56,9 @@ centered = false
 [node name="BottomLeft" type="Control" parent="Rounded_Rectangles"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = 496.0
+margin_top = -65.0
 margin_right = 64.0
-margin_bottom = 560.0
+margin_bottom = -1.0
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -74,10 +76,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 920.0
-margin_top = 496.0
-margin_right = 984.0
-margin_bottom = 560.0
+margin_left = -64.0
+margin_top = -65.0
+margin_bottom = -1.0
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
