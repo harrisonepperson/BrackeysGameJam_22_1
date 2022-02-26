@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scenes/Levels/Tutorial_Choice.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Goal.tscn" type="PackedScene" id=2]
@@ -8,6 +8,37 @@
 [ext_resource path="res://Scenes/Decoration/fountain.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Meshes/Rock.tres" type="ArrayMesh" id=7]
 [ext_resource path="res://Materials/Ground.tres" type="Material" id=8]
+
+[sub_resource type="Gradient" id=11]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=12]
+gradient = SubResource( 11 )
+
+[sub_resource type="Curve" id=6]
+_data = [ Vector2( 0.025641, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.476923, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+emission_shape = 2
+emission_box_extents = Vector3( 20, 0.1, 50 )
+direction = Vector3( 0, 1, 0 )
+gravity = Vector3( 0, 0.2, 0 )
+initial_velocity = 0.5
+radial_accel = 0.1
+damping = 0.2
+scale = 0.2
+scale_curve = SubResource( 7 )
+color_ramp = SubResource( 12 )
+
+[sub_resource type="SpatialMaterial" id=9]
+vertex_color_use_as_albedo = true
+albedo_color = Color( 0.145098, 0.0666667, 0.403922, 1 )
+
+[sub_resource type="CubeMesh" id=10]
+material = SubResource( 9 )
 
 [sub_resource type="Animation" id=4]
 resource_name = "FountainTopBlockRot"
@@ -84,6 +115,25 @@ extents = Vector3( 2, 1, 2 )
 extents = Vector3( 5, 1, 1 )
 
 [node name="Spatial2" type="Spatial"]
+
+[node name="background_particles" type="Spatial" parent="."]
+visible = false
+
+[node name="background_particles" type="Particles" parent="background_particles"]
+transform = Transform( 0.91864, 0, -0.395097, 0, 1, 0, 0.395097, 0, 0.91864, -41.0822, -53.6303, -36.0875 )
+amount = 150
+lifetime = 60.0
+preprocess = 500.0
+process_material = SubResource( 8 )
+draw_pass_1 = SubResource( 10 )
+
+[node name="background_particles2" type="Particles" parent="background_particles"]
+transform = Transform( -0.142093, 0, -0.989853, 0, 1, 0, 0.989853, 0, -0.142093, 66.4913, -53.6303, -84.8723 )
+amount = 150
+lifetime = 60.0
+preprocess = 500.0
+process_material = SubResource( 8 )
+draw_pass_1 = SubResource( 10 )
 
 [node name="Goal" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0509396, 1, -16.3217 )
