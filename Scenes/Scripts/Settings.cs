@@ -6,7 +6,6 @@ public class Settings : Popup
 	private Singleton singleton;
 	private bool isModalOpen = false;
 	
-	private bool bloomEnabled;
 	private float masterAudioLevel;
 	private float musicAudioLevel;
 	private float sfxAudioLevel;
@@ -15,7 +14,6 @@ public class Settings : Popup
 	{
 		singleton = GetNode<Singleton>("/root/Singleton");
 		
-		bloomEnabled = singleton.bloomEnabled;
 		masterAudioLevel = singleton.masterAudioLevel;
 		musicAudioLevel = singleton.musicAudioLevel;
 		sfxAudioLevel = singleton.sfxAudioLevel;
@@ -38,7 +36,6 @@ public class Settings : Popup
 	private void _on_Settings_about_to_show()
 	{
 		isModalOpen = true;
-		GetNode<CheckButton>("MarginContainer/GridContainer/Bloom_Choice").Pressed = singleton.bloomEnabled;
 		
 		GetNode<HSlider>("MarginContainer/GridContainer/Master_Audio_Level").Value = singleton.masterAudioLevel;
 		GetNode<HSlider>("MarginContainer/GridContainer/Music_Audio_Level").Value = singleton.musicAudioLevel;
@@ -47,8 +44,6 @@ public class Settings : Popup
 	
 	private void _on_Save_button_up()
 	{
-		bloomEnabled = GetNode<CheckButton>("MarginContainer/GridContainer/Bloom_Choice").Pressed;
-		
 		masterAudioLevel = (float)GetNode<HSlider>("MarginContainer/GridContainer/Master_Audio_Level").Value;
 		musicAudioLevel = (float)GetNode<HSlider>("MarginContainer/GridContainer/Music_Audio_Level").Value;
 		sfxAudioLevel = (float)GetNode<HSlider>("MarginContainer/GridContainer/SFX_Audio_Level").Value;
@@ -74,7 +69,6 @@ public class Settings : Popup
 			AudioServer.SetBusVolumeDb(2, sfxAudioLevel);
 		}
 		
-		singleton.bloomEnabled = bloomEnabled;
 		singleton.masterAudioLevel = masterAudioLevel;
 		singleton.musicAudioLevel = musicAudioLevel;
 		singleton.sfxAudioLevel = sfxAudioLevel;
