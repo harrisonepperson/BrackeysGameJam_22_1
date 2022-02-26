@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Walkable.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/SpawnPoint.tscn" type="PackedScene" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://Scenes/Bricks/Dead_End_Brick.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Bricks/Corner_Brick.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Decoration/orrery-child.tscn" type="PackedScene" id=9]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 5, 1, 1 )
 
 [node name="Spatial" type="Spatial"]
 __meta__ = {
@@ -147,3 +150,91 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 collision_layer = 8
 collision_mask = 8
 input_ray_pickable = false
+
+[node name="CollisionShape6" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 0, 0, 3.96775 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape9" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -8, 0, 3.96775 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape11" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -14, 0, -4.03225 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape12" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -10, 0, -8.03225 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape15" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -10, 0, -10.0322 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape18" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 0, 0, -20.0322 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape20" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 8, 0, -12.0322 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape25" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 8, 0, -8.03225 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape26" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 6, 0, -6.03225 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape27" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 6, 0, -4.03225 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape16" type="CollisionShape" parent="Walls"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, -16.0322 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape19" type="CollisionShape" parent="Walls"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 0, -16.0322 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape24" type="CollisionShape" parent="Walls"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 0, -8.03225 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape21" type="CollisionShape" parent="Walls"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0, -20.0322 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape17" type="CollisionShape" parent="Walls"]
+transform = Transform( -2.62268e-08, 0, -1, 0, 1, 0, 0.6, 0, -4.37114e-08, 0, 0, -14.0322 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape22" type="CollisionShape" parent="Walls"]
+transform = Transform( -2.62268e-08, 0, -1, 0, 1, 0, 0.6, 0, -4.37114e-08, -2, 0, -6.03225 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape23" type="CollisionShape" parent="Walls"]
+transform = Transform( 0.6, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -4.03225 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape13" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -10, 0, -8.03225 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape14" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -14, 0, -6.03225 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="Walls"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0, 0.967754 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape8" type="CollisionShape" parent="Walls"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0, 0.967754 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape10" type="CollisionShape" parent="Walls"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12, 0, 0.967754 )
+shape = SubResource( 1 )
