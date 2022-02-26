@@ -1,0 +1,123 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Scenes/Walkable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Fonts/Colus/Colus-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Materials/Goal.tres" type="Material" id=3]
+[ext_resource path="res://Scenes/Menu/Scripts/CreditsBG.cs" type="Script" id=4]
+[ext_resource path="res://Scenes/Menu/Scripts/OutroText.cs" type="Script" id=5]
+[ext_resource path="res://Scenes/Menu/Scripts/CameraMovement.cs" type="Script" id=6]
+[ext_resource path="res://Scenes/Rounded_Rectangle_Viewport.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.657343 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="Environment" id=1]
+background_mode = 1
+background_color = Color( 0.054902, 0.054902, 0.14902, 1 )
+ambient_light_color = Color( 0.647059, 0.65098, 0.964706, 1 )
+ssao_enabled = true
+ssao_radius = 0.4
+ssao_intensity = 1.6
+ssao_radius2 = 4.0
+ssao_intensity2 = 2.0
+ssao_quality = 2
+glow_enabled = true
+glow_intensity = 0.4
+glow_high_quality = true
+adjustment_color_correction = SubResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.0901961, 0.0901961, 0.247059, 1 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.0901961, 0.0901961, 0.247059, 1 )
+
+[sub_resource type="SphereMesh" id=5]
+radius = 0.5
+height = 1.0
+
+[node name="Spatial" type="Spatial"]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.850495, -0.0556782, 0.523027, -0.0378244, 0.985333, 0.166399, -0.524621, -0.161305, 0.835915, 7, 7, 13 )
+shadow_enabled = true
+
+[node name="Default" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="Spatial" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.936109, 0.351711, 0, -0.351711, 0.936109, 0, 0.437036, -7.98788 )
+script = ExtResource( 6 )
+
+[node name="Camera" type="Camera" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 0.936109, -0.351711, 0, 0.351711, 0.936109, 0, -0.869599, 7.30999 )
+fov = 35.0
+
+[node name="Rounded_Rectangle_Viewport" parent="Spatial/Camera" instance=ExtResource( 7 )]
+
+[node name="Walkables" type="Spatial" parent="."]
+
+[node name="Walkable11" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 0.44907, 0.0355939, 0.892787, 0.660141, 0.660141, -0.358368, -0.602121, 0.750298, 0.272952, -2.02179, 4.58212, -7.784 )
+
+[node name="Walkable13" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 0.172462, 0.110327, 0.143474, -0.0710742, -0.140976, 0.193841, 0.16645, -0.174509, -0.0658863, -1.31702, 1.29081, -7.34503 )
+
+[node name="Walkable12" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 0.34282, -0.362213, -0.0357223, 0.33007, 0.330071, -0.179184, 0.153387, 0.0992741, 0.465421, 2.56693, 2.50216, -7.784 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BG" type="Panel" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Label" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -190.5
+margin_top = -46.5
+margin_right = 190.5
+margin_bottom = 46.5
+custom_colors/font_color = Color( 0.647059, 0.65098, 0.964706, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "made by harrison and jay
+
+music by LudoLoon Studio
+sound fx from mixkit"
+align = 1
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BGDark" type="Panel" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 7 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rounded_Rectangle_Viewport" parent="CanvasLayer" instance=ExtResource( 7 )]
+
+[node name="Visual" type="MeshInstance" parent="."]
+transform = Transform( 33.5921, 0, 0, 0, 33.5921, 0, 0, 0, 33.5921, 0, 2, -26.311 )
+cast_shadow = 0
+mesh = SubResource( 5 )
+skeleton = NodePath("../../..")
+material/0 = ExtResource( 3 )
