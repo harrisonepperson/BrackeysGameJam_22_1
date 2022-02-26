@@ -29,7 +29,18 @@ nextScene = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4 )
 
 [node name="fountain walkable" parent="Walkables" instance=ExtResource( 4 )]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.70997, 0, -8.02568 )
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.15184, 0, -8.02568 )
+
+[node name="spotlight" type="SpotLight" parent="Walkables/fountain walkable"]
+transform = Transform( -0.0949107, 1.97607, -0.293516, 0.0471913, 0.295983, 1.97741, 1.99719, 0.0869132, -0.0606726, -1.18781, 9.2678, 0.0353451 )
+light_color = Color( 1, 0.6, 0.278431, 1 )
+light_energy = 20.0
+light_indirect_energy = 10.0
+light_specular = 4.0
+shadow_enabled = true
+spot_range = 10.0
+spot_angle = 40.0
+spot_angle_attenuation = 0.0915053
 
 [node name="small brick2" type="MeshInstance" parent="Walkables/fountain walkable"]
 transform = Transform( 0.278808, 0.280142, 0.0615335, -0.249378, 0.27916, -0.140997, -0.141693, 0.0599151, 0.369234, -0.048665, -3.45162, 0.0474339 )
