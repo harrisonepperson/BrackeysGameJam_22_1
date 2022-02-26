@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/fountain_proximity.mp3-e9b0c741233d2a328c62c263f20521fa.mp3str"
+
+[deps]
+
+source_file="res://Audio/Sounds/fountain_proximity.mp3"
+dest_files=[ "res://.import/fountain_proximity.mp3-e9b0c741233d2a328c62c263f20521fa.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

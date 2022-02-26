@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/birds_chirping.mp3-24cfdd236c1d4032a4049387e81e55fa.mp3str"
+
+[deps]
+
+source_file="res://Audio/Sounds/birds_chirping.mp3"
+dest_files=[ "res://.import/birds_chirping.mp3-24cfdd236c1d4032a4049387e81e55fa.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
