@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/goal_proximity.mp3-c6748f370190211cc46d28d530be477f.mp3str"
+
+[deps]
+
+source_file="res://Audio/Sounds/goal_proximity.mp3"
+dest_files=[ "res://.import/goal_proximity.mp3-c6748f370190211cc46d28d530be477f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

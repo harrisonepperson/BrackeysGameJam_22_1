@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Meshes/fountain.glb" type="PackedScene" id=1]
 [ext_resource path="res://Materials/Brick_Glow.tres" type="Material" id=2]
 [ext_resource path="res://Materials/Ground.tres" type="Material" id=3]
+[ext_resource path="res://Audio/Sounds/birds_chirping.mp3" type="AudioStream" id=4]
 
 [sub_resource type="SpatialMaterial" id=5]
 flags_do_not_receive_shadows = true
@@ -63,13 +64,23 @@ color_ramp = SubResource( 7 )
 
 [node name="fountain" instance=ExtResource( 1 )]
 
-[node name="Circle" parent="." index="0"]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.29164, 0 )
+stream = ExtResource( 4 )
+unit_db = -10.0
+unit_size = 25.0
+max_db = 6.0
+autoplay = true
+max_distance = 5.0
+bus = "Effects"
+
+[node name="Circle" parent="." index="1"]
 material/0 = ExtResource( 3 )
 
-[node name="Circle001" parent="." index="1"]
+[node name="Circle001" parent="." index="2"]
 material/0 = SubResource( 5 )
 
-[node name="Particles3" type="Particles" parent="." index="2"]
+[node name="Particles3" type="Particles" parent="." index="3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7217, 0 )
 amount = 64
 lifetime = 0.7
@@ -78,7 +89,7 @@ randomness = 0.01
 process_material = SubResource( 4 )
 draw_pass_1 = SubResource( 2 )
 
-[node name="Particles2" type="Particles" parent="." index="3"]
+[node name="Particles2" type="Particles" parent="." index="4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.70724, 0 )
 amount = 32
 lifetime = 0.7
