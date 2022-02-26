@@ -146,60 +146,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Bloom_Label" type="Label" parent="Settings/MarginContainer/GridContainer"]
-margin_top = 13.0
-margin_right = 96.0
-margin_bottom = 27.0
-size_flags_horizontal = 2
-text = "Bloom Enabled"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Bloom_Choice" type="CheckButton" parent="Settings/MarginContainer/GridContainer"]
-margin_left = 416.0
-margin_right = 492.0
-margin_bottom = 40.0
-pressed = true
-
-[node name="HSeparator" type="HSeparator" parent="Settings/MarginContainer/GridContainer"]
-margin_top = 44.0
-margin_right = 412.0
-margin_bottom = 48.0
-
-[node name="HSeparator2" type="HSeparator" parent="Settings/MarginContainer/GridContainer"]
-margin_left = 416.0
-margin_top = 44.0
-margin_right = 492.0
-margin_bottom = 48.0
-
 [node name="Master_Audio_Label" type="Label" parent="Settings/MarginContainer/GridContainer"]
-margin_top = 53.0
+margin_top = 1.0
 margin_right = 123.0
-margin_bottom = 67.0
+margin_bottom = 15.0
 size_flags_horizontal = 2
 text = "Master Audio Level"
 
 [node name="Master_Audio_Level" type="HSlider" parent="Settings/MarginContainer/GridContainer"]
-margin_left = 416.0
-margin_top = 52.0
+margin_left = 248.0
 margin_right = 492.0
-margin_bottom = 68.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
 min_value = -10.0
 max_value = 0.0
 
 [node name="Music_Audio_Label" type="Label" parent="Settings/MarginContainer/GridContainer"]
-margin_top = 73.0
+margin_top = 21.0
 margin_right = 117.0
-margin_bottom = 87.0
+margin_bottom = 35.0
 size_flags_horizontal = 2
 text = "Music Audio Level"
 
 [node name="Music_Audio_Level" type="HSlider" parent="Settings/MarginContainer/GridContainer"]
-margin_left = 416.0
-margin_top = 72.0
+margin_left = 248.0
+margin_top = 20.0
 margin_right = 492.0
-margin_bottom = 88.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
 min_value = -10.0
 max_value = 0.0
 __meta__ = {
@@ -207,17 +181,18 @@ __meta__ = {
 }
 
 [node name="SFX_Audio_Label" type="Label" parent="Settings/MarginContainer/GridContainer"]
-margin_top = 93.0
+margin_top = 41.0
 margin_right = 101.0
-margin_bottom = 107.0
+margin_bottom = 55.0
 size_flags_horizontal = 2
 text = "SFX Audio Level"
 
 [node name="SFX_Audio_Level" type="HSlider" parent="Settings/MarginContainer/GridContainer"]
-margin_left = 416.0
-margin_top = 92.0
+margin_left = 248.0
+margin_top = 40.0
 margin_right = 492.0
-margin_bottom = 108.0
+margin_bottom = 56.0
+size_flags_horizontal = 3
 min_value = -10.0
 max_value = 0.0
 
