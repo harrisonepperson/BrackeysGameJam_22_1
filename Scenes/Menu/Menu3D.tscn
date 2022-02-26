@@ -53,10 +53,9 @@ script = ExtResource( 6 )
 
 [node name="Camera" type="Camera" parent="Spatial"]
 transform = Transform( 1, 0, 0, 0, 0.936109, -0.351711, 0, 0.351711, 0.936109, 0, -0.869599, 7.30999 )
-current = true
 fov = 50.0
 
-[node name="Rounded_Rectangle_Viewport" parent="Spatial/Camera" instance=ExtResource( 10 )]
+[node name="Universal_Viewport" parent="Spatial/Camera" instance=ExtResource( 10 )]
 
 [node name="Goal" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -8 )

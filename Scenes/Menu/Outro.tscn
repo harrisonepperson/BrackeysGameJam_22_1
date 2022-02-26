@@ -42,7 +42,7 @@ bg_color = Color( 0.0901961, 0.0901961, 0.247059, 1 )
 radius = 0.5
 height = 1.0
 
-[node name="Spatial" type="Spatial"]
+[node name="Spatial3" type="Spatial"]
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.850495, -0.0556782, 0.523027, -0.0378244, 0.985333, 0.166399, -0.524621, -0.161305, 0.835915, 7, 7, 13 )
