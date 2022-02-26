@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Walkable.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/SpawnPoint.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Scenes/Bricks/Dead_End_Brick.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Bricks/Corner_Brick.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Decoration/Ambient_Nature_Collection.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Menu/Outro.tscn" type="PackedScene" id=10]
 
 [node name="Spatial" type="Spatial"]
 __meta__ = {
@@ -30,6 +31,7 @@ Keep those things in mind and you're on your way to building a great level!"
 
 [node name="Goal" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -8 )
+nextScene = ExtResource( 10 )
 
 [node name="SpawnPoint" parent="." instance=ExtResource( 2 )]
 

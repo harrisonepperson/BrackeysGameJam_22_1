@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Walkable.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/SpawnPoint.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Goal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Levels/Level_Field_ of_blocks.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Bricks/Tunnel_Brick.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Bricks/Dead_End_Brick.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Bricks/Corner_Brick.tscn" type="PackedScene" id=8]
@@ -49,6 +50,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 1, -24 )
 
 [node name="Goal3" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 1, 6 )
+nextScene = ExtResource( 4 )
 
 [node name="SpawnPoint" parent="." instance=ExtResource( 2 )]
 
@@ -666,6 +668,5 @@ shape = SubResource( 5 )
 
 [node name="ambient_nature_collection" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -12 )
-visible = false
 showFallingLeaves = false
 showButterflies = true
