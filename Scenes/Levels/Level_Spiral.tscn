@@ -1,0 +1,545 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/Walkable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/SpawnPoint.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Goal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Bricks/Tunnel_Brick.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Bricks/Dead_End_Brick.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Bricks/Corner_Brick.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Decoration/Ambient_Nature_Collection.tscn" type="PackedScene" id=9]
+
+[node name="Spatial" type="Spatial"]
+__meta__ = {
+"_editor_description_": "So you want to design a map?  Great!
+Couple of things to keep in mind before you get started:
+
+- Bricks should be added as children of walkables.  We've provided one of each type on this level for your copying convenience.
+- Walkables should be on a flat horizontal plain.
+- Every Level needs 1 SpawnPoint
+	- This provides the lighting, environment, and player
+- Every Level needs 1 Goal
+	- This should have a packed scene provided to it to indicate what the next level to load is
+- The Walls object should be populated with walls that are unique to the current level (don't copy them across levels)
+	- As we edit various levels, if the walls are copied over we risk unintentional effects when editting colliders extents.
+- Every level should be beatable (player can navigate to the goal)
+
+Keep those things in mind and you're on your way to building a great level!"
+}
+
+[node name="Goal" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -30 )
+
+[node name="Goal2" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 1, -24 )
+
+[node name="Goal3" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 1, 6 )
+
+[node name="SpawnPoint" parent="." instance=ExtResource( 2 )]
+
+[node name="Walkables" type="Spatial" parent="."]
+
+[node name="Walkable1" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -12 )
+
+[node name="Walkable7" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -10 )
+
+[node name="Walkable9" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -12 )
+
+[node name="Walkable11" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -14 )
+
+[node name="Walkable13" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -12 )
+
+[node name="Walkable8" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -24 )
+
+[node name="Dead End" parent="Walkables/Walkable8" instance=ExtResource( 7 )]
+
+[node name="Walkable10" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, -22 )
+
+[node name="Dead End" parent="Walkables/Walkable10" instance=ExtResource( 7 )]
+
+[node name="Walkable25" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -16 )
+
+[node name="Tunnel" parent="Walkables/Walkable25" instance=ExtResource( 5 )]
+
+[node name="Walkable26" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -16 )
+
+[node name="Tunnel" parent="Walkables/Walkable26" instance=ExtResource( 5 )]
+
+[node name="Walkable27" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -16 )
+
+[node name="Tunnel" parent="Walkables/Walkable27" instance=ExtResource( 5 )]
+
+[node name="Walkable21" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -8 )
+
+[node name="Tunnel" parent="Walkables/Walkable21" instance=ExtResource( 5 )]
+
+[node name="Walkable22" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -8 )
+
+[node name="Tunnel" parent="Walkables/Walkable22" instance=ExtResource( 5 )]
+
+[node name="Walkable23" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -8 )
+
+[node name="Tunnel" parent="Walkables/Walkable23" instance=ExtResource( 5 )]
+
+[node name="Walkable16" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14, 0, -12 )
+
+[node name="Corner" parent="Walkables/Walkable16" instance=ExtResource( 8 )]
+
+[node name="Walkable24" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 0, -8 )
+
+[node name="Corner" parent="Walkables/Walkable24" instance=ExtResource( 8 )]
+
+[node name="Walkable33" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -4 )
+
+[node name="Tunnel" parent="Walkables/Walkable33" instance=ExtResource( 5 )]
+
+[node name="Walkable34" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -4 )
+
+[node name="Tunnel" parent="Walkables/Walkable34" instance=ExtResource( 5 )]
+
+[node name="Walkable36" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -4 )
+
+[node name="Tunnel" parent="Walkables/Walkable36" instance=ExtResource( 5 )]
+
+[node name="Walkable37" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -4 )
+
+[node name="Tunnel" parent="Walkables/Walkable37" instance=ExtResource( 5 )]
+
+[node name="Walkable38" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -4 )
+
+[node name="Tunnel" parent="Walkables/Walkable38" instance=ExtResource( 5 )]
+
+[node name="Walkable57" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -4 )
+
+[node name="Tunnel" parent="Walkables/Walkable57" instance=ExtResource( 5 )]
+
+[node name="Walkable39" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -4 )
+
+[node name="Tunnel" parent="Walkables/Walkable39" instance=ExtResource( 5 )]
+
+[node name="Walkable81" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 0 )
+
+[node name="Tunnel" parent="Walkables/Walkable81" instance=ExtResource( 5 )]
+
+[node name="Walkable82" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, 0 )
+
+[node name="Tunnel" parent="Walkables/Walkable82" instance=ExtResource( 5 )]
+
+[node name="Walkable83" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0 )
+
+[node name="Tunnel" parent="Walkables/Walkable83" instance=ExtResource( 5 )]
+
+[node name="Walkable84" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 0 )
+
+[node name="Tunnel" parent="Walkables/Walkable84" instance=ExtResource( 5 )]
+
+[node name="Walkable85" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0 )
+
+[node name="Tunnel" parent="Walkables/Walkable85" instance=ExtResource( 5 )]
+
+[node name="Walkable86" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 0 )
+
+[node name="Tunnel" parent="Walkables/Walkable86" instance=ExtResource( 5 )]
+
+[node name="Walkable87" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0 )
+
+[node name="Tunnel" parent="Walkables/Walkable87" instance=ExtResource( 5 )]
+
+[node name="Walkable89" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0 )
+
+[node name="Tunnel" parent="Walkables/Walkable89" instance=ExtResource( 5 )]
+
+[node name="Walkable90" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0 )
+
+[node name="Tunnel" parent="Walkables/Walkable90" instance=ExtResource( 5 )]
+
+[node name="Walkable91" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0 )
+
+[node name="Tunnel" parent="Walkables/Walkable91" instance=ExtResource( 5 )]
+
+[node name="Walkable92" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0 )
+
+[node name="Tunnel" parent="Walkables/Walkable92" instance=ExtResource( 5 )]
+
+[node name="Walkable58" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -20 )
+
+[node name="Tunnel" parent="Walkables/Walkable58" instance=ExtResource( 5 )]
+
+[node name="Walkable59" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, -20 )
+
+[node name="Tunnel" parent="Walkables/Walkable59" instance=ExtResource( 5 )]
+
+[node name="Walkable60" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -20 )
+
+[node name="Tunnel" parent="Walkables/Walkable60" instance=ExtResource( 5 )]
+
+[node name="Walkable61" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -20 )
+
+[node name="Tunnel" parent="Walkables/Walkable61" instance=ExtResource( 5 )]
+
+[node name="Walkable62" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -20 )
+
+[node name="Tunnel" parent="Walkables/Walkable62" instance=ExtResource( 5 )]
+
+[node name="Walkable63" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -20 )
+
+[node name="Tunnel" parent="Walkables/Walkable63" instance=ExtResource( 5 )]
+
+[node name="Walkable64" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -20 )
+
+[node name="Tunnel" parent="Walkables/Walkable64" instance=ExtResource( 5 )]
+
+[node name="Walkable65" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -24 )
+
+[node name="Tunnel" parent="Walkables/Walkable65" instance=ExtResource( 5 )]
+
+[node name="Walkable66" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -24 )
+
+[node name="Tunnel" parent="Walkables/Walkable66" instance=ExtResource( 5 )]
+
+[node name="Walkable67" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -24 )
+
+[node name="Tunnel" parent="Walkables/Walkable67" instance=ExtResource( 5 )]
+
+[node name="Walkable68" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -24 )
+
+[node name="Tunnel" parent="Walkables/Walkable68" instance=ExtResource( 5 )]
+
+[node name="Walkable88" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, -24 )
+
+[node name="Tunnel" parent="Walkables/Walkable88" instance=ExtResource( 5 )]
+
+[node name="Walkable105" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -24 )
+
+[node name="Tunnel" parent="Walkables/Walkable105" instance=ExtResource( 5 )]
+
+[node name="Walkable107" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, -24 )
+
+[node name="Tunnel" parent="Walkables/Walkable107" instance=ExtResource( 5 )]
+
+[node name="Walkable69" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -24 )
+
+[node name="Tunnel" parent="Walkables/Walkable69" instance=ExtResource( 5 )]
+
+[node name="Walkable70" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -24 )
+
+[node name="Tunnel" parent="Walkables/Walkable70" instance=ExtResource( 5 )]
+
+[node name="Walkable71" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -24 )
+
+[node name="Tunnel" parent="Walkables/Walkable71" instance=ExtResource( 5 )]
+
+[node name="Walkable35" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0, -4 )
+
+[node name="Corner" parent="Walkables/Walkable35" instance=ExtResource( 8 )]
+
+[node name="Walkable17" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -8 )
+
+[node name="Corner" parent="Walkables/Walkable17" instance=ExtResource( 8 )]
+
+[node name="Walkable31" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -4 )
+
+[node name="Corner" parent="Walkables/Walkable31" instance=ExtResource( 8 )]
+
+[node name="Walkable43" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, 0 )
+
+[node name="Corner" parent="Walkables/Walkable43" instance=ExtResource( 8 )]
+
+[node name="Walkable18" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -18, 0, -16 )
+
+[node name="Corner" parent="Walkables/Walkable18" instance=ExtResource( 8 )]
+
+[node name="Walkable19" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -14, 0, -20 )
+
+[node name="Corner" parent="Walkables/Walkable19" instance=ExtResource( 8 )]
+
+[node name="Walkable73" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -10, 0, -24 )
+
+[node name="Corner" parent="Walkables/Walkable73" instance=ExtResource( 8 )]
+
+[node name="Walkable20" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -22, 0, -12 )
+
+[node name="Corner" parent="Walkables/Walkable20" instance=ExtResource( 8 )]
+
+[node name="Walkable28" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -26, 0, -16 )
+
+[node name="Corner" parent="Walkables/Walkable28" instance=ExtResource( 8 )]
+
+[node name="Walkable48" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -30, 0, -20 )
+
+[node name="Corner" parent="Walkables/Walkable48" instance=ExtResource( 8 )]
+
+[node name="Walkable112" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, -24 )
+
+[node name="Tunnel" parent="Walkables/Walkable112" instance=ExtResource( 5 )]
+
+[node name="Walkable113" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, -26 )
+
+[node name="Tunnel" parent="Walkables/Walkable113" instance=ExtResource( 5 )]
+
+[node name="Walkable114" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, -18 )
+
+[node name="Tunnel" parent="Walkables/Walkable114" instance=ExtResource( 5 )]
+
+[node name="Walkable115" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, -20 )
+
+[node name="Tunnel" parent="Walkables/Walkable115" instance=ExtResource( 5 )]
+
+[node name="Walkable116" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, -14 )
+
+[node name="Tunnel" parent="Walkables/Walkable116" instance=ExtResource( 5 )]
+
+[node name="Walkable117" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, -16 )
+
+[node name="Tunnel" parent="Walkables/Walkable117" instance=ExtResource( 5 )]
+
+[node name="Walkable118" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, -10 )
+
+[node name="Tunnel" parent="Walkables/Walkable118" instance=ExtResource( 5 )]
+
+[node name="Walkable119" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, -12 )
+
+[node name="Tunnel" parent="Walkables/Walkable119" instance=ExtResource( 5 )]
+
+[node name="Walkable120" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, -6 )
+
+[node name="Tunnel" parent="Walkables/Walkable120" instance=ExtResource( 5 )]
+
+[node name="Walkable121" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, -8 )
+
+[node name="Tunnel" parent="Walkables/Walkable121" instance=ExtResource( 5 )]
+
+[node name="Walkable139" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -26, 0, -14 )
+
+[node name="Tunnel" parent="Walkables/Walkable139" instance=ExtResource( 5 )]
+
+[node name="Walkable140" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -26, 0, -10 )
+
+[node name="Tunnel" parent="Walkables/Walkable140" instance=ExtResource( 5 )]
+
+[node name="Walkable141" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -26, 0, -12 )
+
+[node name="Tunnel" parent="Walkables/Walkable141" instance=ExtResource( 5 )]
+
+[node name="Walkable142" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -26, 0, -6 )
+
+[node name="Tunnel" parent="Walkables/Walkable142" instance=ExtResource( 5 )]
+
+[node name="Walkable143" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -26, 0, -8 )
+
+[node name="Tunnel" parent="Walkables/Walkable143" instance=ExtResource( 5 )]
+
+[node name="Walkable144" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -26, 0, -2 )
+
+[node name="Tunnel" parent="Walkables/Walkable144" instance=ExtResource( 5 )]
+
+[node name="Walkable145" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -26, 0, -4 )
+
+[node name="Tunnel" parent="Walkables/Walkable145" instance=ExtResource( 5 )]
+
+[node name="Walkable146" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 0, -22 )
+
+[node name="Tunnel" parent="Walkables/Walkable146" instance=ExtResource( 5 )]
+
+[node name="Walkable147" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 0, -18 )
+
+[node name="Tunnel" parent="Walkables/Walkable147" instance=ExtResource( 5 )]
+
+[node name="Walkable148" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 0, -20 )
+
+[node name="Tunnel" parent="Walkables/Walkable148" instance=ExtResource( 5 )]
+
+[node name="Walkable149" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 0, -14 )
+
+[node name="Tunnel" parent="Walkables/Walkable149" instance=ExtResource( 5 )]
+
+[node name="Walkable150" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 0, -16 )
+
+[node name="Tunnel" parent="Walkables/Walkable150" instance=ExtResource( 5 )]
+
+[node name="Walkable151" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 0, -10 )
+
+[node name="Tunnel" parent="Walkables/Walkable151" instance=ExtResource( 5 )]
+
+[node name="Walkable152" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 0, -12 )
+
+[node name="Tunnel" parent="Walkables/Walkable152" instance=ExtResource( 5 )]
+
+[node name="Walkable133" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -14, 0, -18 )
+
+[node name="Tunnel" parent="Walkables/Walkable133" instance=ExtResource( 5 )]
+
+[node name="Walkable134" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -14, 0, -14 )
+
+[node name="Tunnel" parent="Walkables/Walkable134" instance=ExtResource( 5 )]
+
+[node name="Walkable135" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -14, 0, -16 )
+
+[node name="Tunnel" parent="Walkables/Walkable135" instance=ExtResource( 5 )]
+
+[node name="Walkable136" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -22, 0, -10 )
+
+[node name="Tunnel" parent="Walkables/Walkable136" instance=ExtResource( 5 )]
+
+[node name="Walkable137" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -22, 0, -6 )
+
+[node name="Tunnel" parent="Walkables/Walkable137" instance=ExtResource( 5 )]
+
+[node name="Walkable138" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -22, 0, -8 )
+
+[node name="Tunnel" parent="Walkables/Walkable138" instance=ExtResource( 5 )]
+
+[node name="Walkable122" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -30, 0, -16 )
+
+[node name="Tunnel" parent="Walkables/Walkable122" instance=ExtResource( 5 )]
+
+[node name="Walkable132" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -30, 0, -14 )
+
+[node name="Tunnel" parent="Walkables/Walkable132" instance=ExtResource( 5 )]
+
+[node name="Walkable123" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -30, 0, -18 )
+
+[node name="Tunnel" parent="Walkables/Walkable123" instance=ExtResource( 5 )]
+
+[node name="Walkable124" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -30, 0, -10 )
+
+[node name="Tunnel" parent="Walkables/Walkable124" instance=ExtResource( 5 )]
+
+[node name="Walkable125" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -30, 0, -12 )
+
+[node name="Tunnel" parent="Walkables/Walkable125" instance=ExtResource( 5 )]
+
+[node name="Walkable126" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -30, 0, -6 )
+
+[node name="Tunnel" parent="Walkables/Walkable126" instance=ExtResource( 5 )]
+
+[node name="Walkable127" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -30, 0, -8 )
+
+[node name="Tunnel" parent="Walkables/Walkable127" instance=ExtResource( 5 )]
+
+[node name="Walkable128" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -30, 0, -2 )
+
+[node name="Tunnel" parent="Walkables/Walkable128" instance=ExtResource( 5 )]
+
+[node name="Walkable129" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -30, 0, -4 )
+
+[node name="Tunnel" parent="Walkables/Walkable129" instance=ExtResource( 5 )]
+
+[node name="Walkable130" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -30, 0, 2 )
+
+[node name="Tunnel" parent="Walkables/Walkable130" instance=ExtResource( 5 )]
+
+[node name="Walkable131" parent="Walkables" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -30, 0, 0 )
+
+[node name="Tunnel" parent="Walkables/Walkable131" instance=ExtResource( 5 )]
+
+[node name="Walls" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+collision_layer = 8
+collision_mask = 8
+input_ray_pickable = false
+
+[node name="ambient_nature_collection" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0, -12 )
+visible = false
