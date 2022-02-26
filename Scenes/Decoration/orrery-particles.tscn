@@ -77,6 +77,7 @@ material/0 = SubResource( 25 )
 
 [node name="particles 1" type="Particles" parent="."]
 transform = Transform( 6.66667, 0, -4.54747e-13, 0, 6.66667, 0, 4.54747e-13, 0, 6.66667, 0, 0.0309372, 0 )
+cast_shadow = 0
 amount = 50
 lifetime = 4.0
 explosiveness = 0.01
