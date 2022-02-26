@@ -47,6 +47,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="CreditsLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -190.5
+margin_top = -46.0
+margin_right = 190.5
+margin_bottom = -20.0
+mouse_filter = 0
+custom_colors/font_color = Color( 0.647059, 0.65098, 0.964706, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Credits"
+align = 1
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Center" type="Control" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -108,24 +127,5 @@ position = Vector2( 18.125, -111.15 )
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 4 )
 
-[node name="CreditsLabel" type="Label" parent="Center"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -186.0
-margin_top = 228.0
-margin_right = 195.0
-margin_bottom = 254.0
-mouse_filter = 0
-custom_colors/font_color = Color( 0.647059, 0.65098, 0.964706, 1 )
-custom_fonts/font = SubResource( 1 )
-text = "Credits"
-align = 1
-script = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
+[connection signal="gui_input" from="CreditsLabel" to="CreditsLabel" method="_on_CreditsLabel_gui_input"]
 [connection signal="button_down" from="Center/BeginButton" to="Center/BeginButton" method="_on_TextureButton_button_down"]
-[connection signal="gui_input" from="Center/CreditsLabel" to="Center/CreditsLabel" method="_on_CreditsLabel_gui_input"]
