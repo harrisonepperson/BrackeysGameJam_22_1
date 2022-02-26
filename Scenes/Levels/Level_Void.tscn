@@ -238,6 +238,10 @@ shape = SubResource( 15 )
 transform = Transform( -1, 0, 9.05975e-08, 0, 1, 0, -1.50996e-07, 0, -0.6, -4.12799, -0.89015, -23.1621 )
 shape = SubResource( 15 )
 
+[node name="CollisionShape24" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, 3.01992e-08, 0, 1, 0, -1.50996e-07, 0, -0.2, -0.0354395, -0.89015, -13.9485 )
+shape = SubResource( 15 )
+
 [node name="spotlight2" type="OmniLight" parent="."]
 transform = Transform( -0.120986, 0.0929553, 0.988292, 0.98969, 0.0881805, 0.112864, -0.0766569, 0.991758, -0.102666, -0.0709982, 0.629142, -14.0764 )
 light_color = Color( 1, 0.6, 0.278431, 1 )
