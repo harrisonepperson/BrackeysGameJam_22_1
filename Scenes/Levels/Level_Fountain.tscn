@@ -126,7 +126,7 @@ skeleton = NodePath("../Shape")
 material/0 = ExtResource( 8 )
 
 [node name="small brick" type="MeshInstance" parent="Walkables/fountain walkable"]
-transform = Transform( 0.552431, 0.224062, 0.0679445, -0.211987, 0.552569, -0.0986365, -0.0994079, 0.0668108, 0.587924, -0.0609117, -2.27927, 0.0133038 )
+transform = Transform( 0.552431, 0.224062, 0.0679445, -0.211987, 0.552569, -0.0986365, -0.0994079, 0.0668108, 0.587924, -0.0609121, -2.27927, 0.0133038 )
 mesh = ExtResource( 7 )
 skeleton = NodePath("../Shape")
 material/0 = ExtResource( 8 )

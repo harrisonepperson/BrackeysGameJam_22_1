@@ -262,7 +262,7 @@ void fragment()
 	NORMALMAP_DEPTH = 5.25;
 }"
 
-[sub_resource type="ShaderMaterial" id=7]
+[sub_resource type="ShaderMaterial" id=23]
 shader = SubResource( 21 )
 shader_param/wave_speed = 0.2
 shader_param/wave_a = Plane( 0.2, 0.2, 0.07, 0.6 )
@@ -281,7 +281,7 @@ shader_param/depth_offset = -0.75
 shader_param/projector = null
 
 [sub_resource type="SphereMesh" id=22]
-material = SubResource( 7 )
+material = SubResource( 23 )
 radius = 0.5
 height = 1.0
 
