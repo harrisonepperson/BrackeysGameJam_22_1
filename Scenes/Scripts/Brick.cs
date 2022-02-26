@@ -106,12 +106,12 @@ public class Brick : Area
 		}
 	}
 	
-	private void _on_Brick_body_entered(object body)
+	private void _on_Player_Detector_body_entered(object body)
 	{
 		playerOnBlock = true;
 	}
 	
-	private void _on_Brick_body_exited(object body)
+	private void _on_Player_Detector_body_exited(object body)
 	{
 		playerOnBlock = false;
 	}
