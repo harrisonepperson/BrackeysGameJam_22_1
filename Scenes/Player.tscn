@@ -213,7 +213,7 @@ curve = SubResource( 21 )
 direction = Vector3( 0, 20, 0 )
 spread = 22.0
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 1.0
+initial_velocity = 2.0
 damping_curve = SubResource( 20 )
 scale = 0.2
 scale_random = 0.11
@@ -416,7 +416,7 @@ draw_pass_1 = SubResource( 27 )
 [node name="Particles" type="Particles" parent="Heading_Container/Hopping_Container"]
 transform = Transform( -4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0.579384, 0 )
 cast_shadow = 0
-amount = 10
+amount = 3
 lifetime = 3.0
 preprocess = 15.0
 explosiveness = 0.15
