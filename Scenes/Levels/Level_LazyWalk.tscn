@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Walkable.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/SpawnPoint.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Goal.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Levels/Level_Orrery.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Bricks/Block_Brick.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Bricks/T_Brick.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Decoration/Ambient_Nature_Collection.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Decoration/fountain.tscn" type="PackedScene" id=10]
@@ -245,3 +246,33 @@ showFlowers = true
 [node name="ambient_nature_collection9" parent="Ambient" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6 )
 showFlowers = true
+
+[node name="Walkable5" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93725, 0, -4 )
+
+[node name="NoWay" parent="Walkable5" instance=ExtResource( 5 )]
+
+[node name="Walkable6" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.06275, 0, -4 )
+
+[node name="NoWay" parent="Walkable6" instance=ExtResource( 5 )]
+
+[node name="Walkable7" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.06275, 0, -4 )
+
+[node name="NoWay" parent="Walkable7" instance=ExtResource( 5 )]
+
+[node name="Walkable8" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0627, 0, -4 )
+
+[node name="NoWay" parent="Walkable8" instance=ExtResource( 5 )]
+
+[node name="Walkable9" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.06275, 0, -16 )
+
+[node name="NoWay" parent="Walkable9" instance=ExtResource( 5 )]
+
+[node name="Walkable10" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.06275, 0, -16 )
+
+[node name="NoWay" parent="Walkable10" instance=ExtResource( 5 )]

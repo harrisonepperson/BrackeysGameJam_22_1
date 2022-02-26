@@ -55,7 +55,8 @@ public class Goal : Area
 
 	private async void _on_AnimationPlayer_animation_finished(String anim_name)
 	{		
-//		await ToSignal(GetTree().CreateTimer(1), "timeout");
+		await ToSignal(GetTree().CreateTimer(0.5F), "timeout");
+		goalCompleteSound.Stop();
 		GetTree().ChangeSceneTo(nextScene);
 	}
 }

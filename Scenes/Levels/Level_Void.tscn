@@ -133,8 +133,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02537, 0, -15.9911 )
 [node name="Walkable13" parent="Walkables" instance=ExtResource( 4 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.00756478, 0, -15.9911 )
 
-[node name="Corner" parent="Walkables/Walkable13" instance=ExtResource( 2 )]
-
 [node name="Walkable14" parent="Walkables" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0232813, 0, -17.9838 )
 

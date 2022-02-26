@@ -176,3 +176,4 @@ showButterflies = true
 [node name="ambient_nature_collection2" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -10 )
 showTree = true
+showFlowers = true
