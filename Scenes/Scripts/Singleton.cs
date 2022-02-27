@@ -10,7 +10,7 @@ public class Singleton : Node
 	
 	public bool bloomEnabled = true;
 	
-	private string menuScene = "res://Scenes/Menu/Credits.tscn";
+	private string menuScene = "res://Scenes/Menu/Menu3D.tscn";
 	
 	public override void _Ready()
 	{
