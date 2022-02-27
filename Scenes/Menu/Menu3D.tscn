@@ -8,7 +8,7 @@
 [ext_resource path="res://Scenes/Menu/Scripts/CameraMovement.cs" type="Script" id=6]
 [ext_resource path="res://Scenes/Menu/Scripts/MenuIntroFade.cs" type="Script" id=7]
 [ext_resource path="res://Scenes/Dummy_Brick.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Images/Menu/Begin.png" type="Texture" id=9]
+[ext_resource path="res://Images/Menu/begin.png" type="Texture" id=9]
 [ext_resource path="res://Scenes/Universal_Viewport.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ProceduralSky" id=6]
@@ -58,6 +58,7 @@ fov = 50.0
 [node name="menu" parent="Spatial/Camera" instance=ExtResource( 4 )]
 
 [node name="BGDark" type="Panel" parent="Spatial/Camera"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -68,6 +69,7 @@ __meta__ = {
 }
 
 [node name="Universal_Viewport" parent="Spatial/Camera" instance=ExtResource( 10 )]
+visible = false
 
 [node name="Goal" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -8 )
@@ -102,8 +104,6 @@ FirstScene = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 shape = SubResource( 2 )
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [connection signal="input_event" from="Area" to="Area/begin" method="_on_Area_input_event"]
 [connection signal="mouse_entered" from="Area" to="Area/begin" method="_on_Area_mouse_entered"]

@@ -146,33 +146,48 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Full_Screen_Label" type="Label" parent="Settings/MarginContainer/GridContainer"]
+margin_top = 13.0
+margin_right = 244.0
+margin_bottom = 27.0
+text = "Full Screen"
+
+[node name="Full_Screen_Option" type="CheckButton" parent="Settings/MarginContainer/GridContainer"]
+margin_left = 248.0
+margin_right = 492.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Master_Audio_Label" type="Label" parent="Settings/MarginContainer/GridContainer"]
-margin_top = 1.0
+margin_top = 45.0
 margin_right = 123.0
-margin_bottom = 15.0
+margin_bottom = 59.0
 size_flags_horizontal = 2
 text = "Master Audio Level"
 
 [node name="Master_Audio_Level" type="HSlider" parent="Settings/MarginContainer/GridContainer"]
 margin_left = 248.0
+margin_top = 44.0
 margin_right = 492.0
-margin_bottom = 16.0
+margin_bottom = 60.0
 size_flags_horizontal = 3
 min_value = -10.0
 max_value = 0.0
 
 [node name="Music_Audio_Label" type="Label" parent="Settings/MarginContainer/GridContainer"]
-margin_top = 21.0
+margin_top = 65.0
 margin_right = 117.0
-margin_bottom = 35.0
+margin_bottom = 79.0
 size_flags_horizontal = 2
 text = "Music Audio Level"
 
 [node name="Music_Audio_Level" type="HSlider" parent="Settings/MarginContainer/GridContainer"]
 margin_left = 248.0
-margin_top = 20.0
+margin_top = 64.0
 margin_right = 492.0
-margin_bottom = 36.0
+margin_bottom = 80.0
 size_flags_horizontal = 3
 min_value = -10.0
 max_value = 0.0
@@ -181,17 +196,17 @@ __meta__ = {
 }
 
 [node name="SFX_Audio_Label" type="Label" parent="Settings/MarginContainer/GridContainer"]
-margin_top = 41.0
+margin_top = 85.0
 margin_right = 101.0
-margin_bottom = 55.0
+margin_bottom = 99.0
 size_flags_horizontal = 2
 text = "SFX Audio Level"
 
 [node name="SFX_Audio_Level" type="HSlider" parent="Settings/MarginContainer/GridContainer"]
 margin_left = 248.0
-margin_top = 40.0
+margin_top = 84.0
 margin_right = 492.0
-margin_bottom = 56.0
+margin_bottom = 100.0
 size_flags_horizontal = 3
 min_value = -10.0
 max_value = 0.0

@@ -6,6 +6,8 @@ public class Settings : Popup
 	private Singleton singleton;
 	private bool isModalOpen = false;
 	
+	private bool fullScreenEnabled;
+	
 	private float masterAudioLevel;
 	private float musicAudioLevel;
 	private float sfxAudioLevel;
@@ -13,6 +15,8 @@ public class Settings : Popup
 	public override void _Ready()
 	{
 		singleton = GetNode<Singleton>("/root/Singleton");
+		
+		fullScreenEnabled = singleton.fullScreenEnabled;
 		
 		masterAudioLevel = singleton.masterAudioLevel;
 		musicAudioLevel = singleton.musicAudioLevel;
@@ -37,6 +41,8 @@ public class Settings : Popup
 	{
 		isModalOpen = true;
 		
+		GetNode<CheckButton>("MarginContainer/GridContainer/Full_Screen_Option").Pressed = singleton.fullScreenEnabled;
+		
 		GetNode<HSlider>("MarginContainer/GridContainer/Master_Audio_Level").Value = singleton.masterAudioLevel;
 		GetNode<HSlider>("MarginContainer/GridContainer/Music_Audio_Level").Value = singleton.musicAudioLevel;
 		GetNode<HSlider>("MarginContainer/GridContainer/SFX_Audio_Level").Value = singleton.sfxAudioLevel;
@@ -44,6 +50,8 @@ public class Settings : Popup
 	
 	private void _on_Save_button_up()
 	{
+		fullScreenEnabled = GetNode<CheckButton>("MarginContainer/GridContainer/Full_Screen_Option").Pressed;
+		
 		masterAudioLevel = (float)GetNode<HSlider>("MarginContainer/GridContainer/Master_Audio_Level").Value;
 		musicAudioLevel = (float)GetNode<HSlider>("MarginContainer/GridContainer/Music_Audio_Level").Value;
 		sfxAudioLevel = (float)GetNode<HSlider>("MarginContainer/GridContainer/SFX_Audio_Level").Value;
@@ -68,6 +76,10 @@ public class Settings : Popup
 			AudioServer.SetBusMute(2, false);
 			AudioServer.SetBusVolumeDb(2, sfxAudioLevel);
 		}
+		
+		OS.WindowFullscreen = fullScreenEnabled;
+		
+		singleton.fullScreenEnabled = fullScreenEnabled;
 		
 		singleton.masterAudioLevel = masterAudioLevel;
 		singleton.musicAudioLevel = musicAudioLevel;

@@ -9,6 +9,8 @@ public class Walkable : RigidBody
 	private float loftSpeed = 1F;
 	[Export]
 	private bool shouldDropOnLevelFinish = true;
+	[Export]
+	private bool shouldHide = false;
 	
 	private bool steppedOn = false;
 	
@@ -50,7 +52,7 @@ public class Walkable : RigidBody
 		
 		MeshInstance rock = GetNode<MeshInstance>(sceneSelection);
 		rock.RotationDegrees = rot;
-		rock.Visible = true;
+		rock.Visible = !shouldHide;
 		
 		Vector3 pos = Translation;
 		pos.x += ((float)rand.Next(-100, 100) / 500);
