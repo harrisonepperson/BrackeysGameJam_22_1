@@ -58,7 +58,6 @@ fov = 50.0
 [node name="menu" parent="Spatial/Camera" instance=ExtResource( 4 )]
 
 [node name="BGDark" type="Panel" parent="Spatial/Camera"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -69,7 +68,6 @@ __meta__ = {
 }
 
 [node name="Universal_Viewport" parent="Spatial/Camera" instance=ExtResource( 10 )]
-visible = false
 
 [node name="Goal" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -8 )
