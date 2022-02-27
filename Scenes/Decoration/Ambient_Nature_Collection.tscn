@@ -254,7 +254,7 @@ process_material = SubResource( 8 )
 draw_pass_1 = ExtResource( 4 )
 
 [node name="Flower_Patch" type="Particles" parent="Floater"]
-transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.26234, 0, 0.200167 )
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.2, 0, 0.2 )
 amount = 30
 lifetime = 60.0
 preprocess = 60.0
